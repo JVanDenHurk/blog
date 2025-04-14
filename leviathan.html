@@ -3,55 +3,117 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Leviathan Walkthrough</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Leviathan Walkthrough | Hack This and That</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap">
+  <meta name="description" content="A walkthrough of the Leviathan wargame from OverTheWire with solutions and flags.">
 </head>
 <body>
   <div class="container">
     <header>
       <h1>Leviathan CTF Walkthrough</h1>
+      <p class="subtitle">OverTheWire Wargame Challenge Solutions</p>
       <p><a href="index.html">← Back to blog</a></p>
     </header>
 
     <main>
       <article>
-        <h2>leviathan0</h2>
-        <p><code>ls -la</code> to find hidden files. Found <code>bookmarks.html</code>, searched with <code>less</code> → got password.</p>
-        <p><strong>Flag:</strong> <code>3QJ3TgzHDq</code></p>
+        <div class="challenge-info">
+          <p>Leviathan is a wargame on <a href="https://overthewire.org/wargames/leviathan/" target="_blank">OverTheWire</a> that doesn't require any programming knowledge - just Linux skills.</p>
+        </div>
 
-        <h2>leviathan1</h2>
-        <p>Found file <code>check</code> (no access). Used <code>ltrace</code> to find correct password.</p>
-        <p><strong>Flag:</strong> <code>NsN1HwFoyN</code></p>
+        <section class="level-solution">
+          <h2>leviathan0</h2>
+          <div class="solution-steps">
+            <p><code>ls -la</code> to find hidden files. Found <code>bookmarks.html</code>, searched with <code>less</code> → got password.</p>
+            <div class="flag-container">
+              <strong>Flag:</strong> <code>3QJ3TgzHDq</code>
+            </div>
+          </div>
+        </section>
 
-        <h2>leviathan2</h2>
-        <p>Created symlink and used <code>printfile</code> to access restricted file.</p>
-        <p><strong>Flag:</strong> <code>f0n8h2iWLP</code></p>
+        <section class="level-solution">
+          <h2>leviathan1</h2>
+          <div class="solution-steps">
+            <p>Found file <code>check</code> (no access). Used <code>ltrace</code> to find correct password.</p>
+            <div class="flag-container">
+              <strong>Flag:</strong> <code>NsN1HwFoyN</code>
+            </div>
+          </div>
+        </section>
 
-        <h2>leviathan3</h2>
-        <p><code>ltrace</code> revealed password was <code>snlprint</code>.</p>
-        <p><strong>Flag:</strong> <code>WG1egElCvO</code></p>
+        <section class="level-solution">
+          <h2>leviathan2</h2>
+          <div class="solution-steps">
+            <p>Created symlink and used <code>printfile</code> to access restricted file.</p>
+            <div class="flag-container">
+              <strong>Flag:</strong> <code>f0n8h2iWLP</code>
+            </div>
+          </div>
+        </section>
 
-        <h2>leviathan4</h2>
-        <p>Found hidden <code>.trash/bin</code>, translated binary output to get flag.</p>
-        <p><strong>Flag:</strong> <code>0dyxT7F4QD</code></p>
+        <section class="level-solution">
+          <h2>leviathan3</h2>
+          <div class="solution-steps">
+            <p><code>ltrace</code> revealed password was <code>snlprint</code>.</p>
+            <div class="flag-container">
+              <strong>Flag:</strong> <code>WG1egElCvO</code>
+            </div>
+          </div>
+        </section>
 
-        <h2>leviathan5</h2>
-        <p>Created symlink in <code>/tmp/file.log</code> → got flag with <code>~/leviathan5</code>.</p>
-        <p><strong>Flag:</strong> <code>szo7HDB88w</code></p>
+        <section class="level-solution">
+          <h2>leviathan4</h2>
+          <div class="solution-steps">
+            <p>Found hidden <code>.trash/bin</code>, translated binary output to get flag.</p>
+            <div class="flag-container">
+              <strong>Flag:</strong> <code>0dyxT7F4QD</code>
+            </div>
+          </div>
+        </section>
 
-        <h2>leviathan6</h2>
-        <p>Brute-forced 4-digit PIN with a Bash script.</p>
-        <pre><code>#!/bin/bash
+        <section class="level-solution">
+          <h2>leviathan5</h2>
+          <div class="solution-steps">
+            <p>Created symlink in <code>/tmp/file.log</code> → got flag with <code>~/leviathan5</code>.</p>
+            <div class="flag-container">
+              <strong>Flag:</strong> <code>szo7HDB88w</code>
+            </div>
+          </div>
+        </section>
+
+        <section class="level-solution">
+          <h2>leviathan6</h2>
+          <div class="solution-steps">
+            <p>Brute-forced 4-digit PIN with a Bash script.</p>
+            <pre><code>#!/bin/bash
 for a in {0000..9999}
 do
   ~/leviathan6 $a
 done</code></pre>
-        <p><strong>Flag:</strong> <code>qEs5Io5yM8</code></p>
+            <div class="flag-container">
+              <strong>Flag:</strong> <code>qEs5Io5yM8</code>
+            </div>
+          </div>
+        </section>
 
-        <h2>leviathan7</h2>
-        <p><code>cat CONGRATULATIONS</code></p>
+        <section class="level-solution">
+          <h2>leviathan7</h2>
+          <div class="solution-steps">
+            <p><code>cat CONGRATULATIONS</code></p>
+          </div>
+        </section>
+
+        <div class="walkthrough-footer">
+          <p>For more detailed walkthrough steps, you can <a href="#">contact me</a>.</p>
+        </div>
       </article>
     </main>
+
+    <footer>
+      <p>Created by <a href="https://github.com/jvandenhurk" target="_blank">jvandenhurk</a> • Hosted on GitHub Pages</p>
+      <p><small>Last updated: April 2025</small></p>
+    </footer>
   </div>
 </body>
 </html>
