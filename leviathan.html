@@ -2,33 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Leviathan Walkthrough</title>
+  <title>Leviathan CTF Walkthrough</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
   <header>
-    <h1>Leviathan (OverTheWire) Walkthrough</h1>
-    <p>A walkthrough of all levels of the Leviathan CTF.</p>
+    <h1>Leviathan CTF Walkthrough</h1>
+    <p>Part of the OverTheWire wargames — beginner-friendly and full of cool little tricks. Here's how I solved each level.</p>
     <a href="index.html">← Back to blog</a>
   </header>
 
   <main>
-    <h2>Leviathan0</h2>
-    <p><code>ls -la</code> to find hidden files.<br>
+    <h2>leviathan0</h2>
+    <p><strong>ls -la</strong> to find hidden files.<br>
     Found <code>bookmarks.html</code>.<br>
-    Searched for “password” using <code>less</code> and found it.</p>
+    Opened it with <strong>less</strong> and searched for "password". Found the password for leviathan1.</p>
     <p><strong>Flag:</strong> <code>3QJ3TgzHDq</code></p>
 
-    <h2>Leviathan1</h2>
-    <p>Found a file called <code>check</code>. No permissions. Tried <code>cat</code>, <code>strings</code>, and <code>ltrace</code>.</p>
-    <p><strong>Password:</strong> <code>sex</code></p>
+    <h2>leviathan1</h2>
+    <p>Found a file called <code>check</code>, but had no access at first.<br>
+    Things I tried:</p>
+    <ul>
+      <li><strong>cat</strong> → got a wall of nonsense</li>
+      <li><strong>strings</strong> → found “secr” and “love”</li>
+      <li><strong>./check</strong> → asked for password; tried “secr”, “love”, “secrlove” → failed</li>
+      <li><strong>ltrace ./check</strong> → revealed <code>strcmp()</code> call; showed password was <code>sex</code></li>
+    </ul>
+    <p>Switched to user <code>leviathan2</code> and grabbed password from <code>/etc/leviathan_pass</code>.</p>
     <p><strong>Flag:</strong> <code>NsN1HwFoyN</code></p>
 
-    <!-- Repeat for all levels -->
+    <h2>leviathan2</h2>
+    <p>Provided binary tried to print files but blocked paths like <code>../leviathan3/level3</code> and <code>/etc/leviathan_pass/leviathan3</code>.</p>
+    <p>Solution:</p>
+    <ul>
+      <li>Created a symlink in <code>/tmp</code> → <code>ln -s /etc/leviathan_pass/leviathan3 hacked</code></li>
+      <li><code>touch "read.txt"</code> to spoof the second argument</li>
+      <li><code>./printfile "hacked read.txt"</code> tricked the program into reading the symlinked file</li>
+    </ul>
+    <p><strong>Flag:</strong> <code>f0n8h2iWLP</code></p>
+
+    <h2>leviathan3</h2>
+    <p>Ran <code>ltrace ./level3</code>, revealed:</p>
+    <p><code>strcmp("h0no33", "snlprint")</code></p>
+    <p>Entered <code>snlprint</code> and it worked.</p>
+    <p><strong>Flag:</strong> <code>WG1egElCvO</code></p>
+
+    <h2>leviathan4</h2>
+    <p><code>ls -la</code> revealed hidden <code>.trash</code> directory. Inside it was a file called <code>bin</code>.</p>
+    <p>Ran it — it dumped binary. Used an online binary-to-text translator to decode.</p>
+    <p><strong>Flag:</strong> <code>0dyxT7F4QD</code></p>
+
+    <h2>leviathan5</h2>
+    <p>Binary read from <code>/tmp/file.log</code>.</p>
+    <p>Created a symlink:</p>
+    <pre><code>ln -s /etc/leviathan_pass/leviathan6 /tmp/file.log
+./leviathan5</code></pre>
+    <p><strong>Flag:</strong> <code>szo7HDB88w</code></p>
+
+    <h2>leviathan6</h2>
+    <p>Binary asked for a 4-digit PIN. Wrote a brute-force script:</p>
+    <pre><code>#!/bin/bash
+for a in {0000..9999}
+do
+  ./leviathan6 $a
+done</code></pre>
+    <!-- Add result flag once you get it -->
   </main>
 
   <footer>
-    <p>Posted by <a href="https://github.com/jvandenhurk">jvandenhurk</a></p>
+    <p>Written by <a href="https://github.com/jvandenhurk">jvandenhurk</a></p>
   </footer>
 </body>
 </html>
