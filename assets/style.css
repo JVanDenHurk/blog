@@ -52,3 +52,52 @@ footer {
   font-size: 0.9rem;
   color: #66ff66;
 }
+
+/* Mobile-first design adjustments */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  pre, code {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    padding-top: 0.5rem;
+  }
+
+  ul {
+    padding-left: 1rem;
+  }
+}
+
+/* Larger screens (e.g., tablets or desktops) */
+@media (min-width: 769px) {
+  body {
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  pre, code {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+}
