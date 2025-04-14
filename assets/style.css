@@ -56,48 +56,29 @@ footer {
 /* Mobile-first design adjustments */
 @media (max-width: 768px) {
   body {
-    padding: 1rem;
+    padding: 1.5rem;
   }
 
   h1 {
-    font-size: 1.8rem;
+    font-size: 2.2rem; /* Increased font size */
   }
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem; /* Increased font size */
   }
 
   pre, code {
-    font-size: 0.9rem;
-    padding: 0.8rem;
+    font-size: 1rem;  /* Larger font for code blocks */
+    padding: 1rem;   /* Padding increased */
   }
 
   footer {
-    font-size: 0.8rem;
-    padding-top: 0.5rem;
+    font-size: 1rem;  /* Slightly larger footer text */
+    padding-top: 0.8rem;
   }
 
   ul {
     padding-left: 1rem;
   }
 }
-
-/* Larger screens (e.g., tablets or desktops) */
-@media (min-width: 769px) {
-  body {
-    padding: 2rem;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-
-  pre, code {
-    font-size: 1rem;
-    padding: 1rem;
-  }
 }
