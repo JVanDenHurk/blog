@@ -72,6 +72,11 @@ h2::after {
 
 p {
   margin-bottom: 1.5rem;
+  margin-top: 2rem;
+}
+
+.what{
+  padding-top: 1.5rem;
 }
 
 .subtitle {
