@@ -280,6 +280,24 @@ article {
   transform: translateY(-50%);
 }
 
+/* GIF styling */
+.gif-container {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.responsive-gif {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .gif-container {
+    margin: 1.5rem 0;
+  }
+
 /* Media queries */
 @media (max-width: 768px) {
   body {
