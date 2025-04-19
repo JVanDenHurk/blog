@@ -1,0 +1,313 @@
+bandit 0 
+
+lets start first we login to the server
+
+ssh bandit.labs.overthewire.org -p 2220 -l bandit0
+
+prompt for password enter bandit0
+
+ls to see what files there
+
+then cat readme
+
+Flag: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+
+________________________________________________________________
+
+bandit1
+
+ls
+
+find a file named -
+
+quick google search found that if I cat - it interprets its a standerd input or stdin.
+
+cat ./- by giving it a path cat can tell its a file and not stdin.
+
+flag: 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+
+________________________________________________________________
+
+bandit2
+
+ls file shows space in this filename.
+
+cat, type sp and press tab auto fills the escapes \ should look like this: cat spaces\ in\ this\ filename.
+
+flag: MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+
+________________________________________________________________
+
+bandit3
+
+ls find a file inhere
+
+cd inhere
+
+ls don't see anything ls -a using the -a shows all hidden files.
+
+find ...Hiding-From-You
+
+cat ...Hiding-From-You
+
+flag: 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+
+________________________________________________________________
+
+bandit4
+
+ls inhere folder
+
+cd inhere
+
+used file ./* prints all the files and types.
+
+-file07 is ASCII text.
+
+cat ./-file07
+
+flag: 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+
+________________________________________________________________
+
+bandit5
+
+ls file inhere cd inhere
+
+mutltiple files to search through
+
+there is a hint on https://overthewire.org/wargames/bandit/bandit6.html.
+
+use find with these properties human-readable, 1033 bytes in size, not executable.
+
+find inhere -type f -size 1033c ! -executable
+
+with the result inhere/maybehere07/.file2
+
+cat inhere/maybehere07/.file2
+
+flag: HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
+
+________________________________________________________________
+
+bandit6
+
+following the instructions again https://overthewire.org/wargames/bandit/bandit7.html
+
+we need to serch /, only file type, owned by bandit7, grouped by bandit6, exatcly 33bytes and redirect errors to null.
+
+find / -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null
+
+cat /var/lib/dpkg/info/bandit7.password
+
+flag: morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+
+________________________________________________________________
+
+bandit7
+
+ls has a file called data.txt that holds alot of text.
+
+according to hint it should be next to the millionth word.
+
+cat data.txt | grep millionth
+
+flag: dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+
+________________________________________________________________
+
+bandit8
+
+hint tells us data.txt has duplicates and the flag only appears once.
+
+we need to group the duplicates and find the uniq
+
+sort data.txt | uniq -u
+
+flag: 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+
+________________________________________________________________
+
+bandit9
+
+need to find a few human-readable strings preceded by serveral '=' characters
+
+strings data.txt | grep ===
+
+flag: FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+
+________________________________________________________________
+
+bandit10
+
+the text file is base64 encoded.
+
+use the command basecode64 with -d flag to decode and pass the file.
+
+basecode64 -d data.txt
+
+flag: dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+
+________________________________________________________________
+
+bandit11
+
+the text file is a rot13 cipher.
+
+cat data.txt
+
+Gur cnffjbeq vf 7k16JArUVv5LxVuJfsSVdbbtaHGlw9D4
+
+we need to read the file, translate all lowercase and uppercase letters (remove whitespace) then rotate each 13th letter.
+
+cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+
+flag: 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+
+________________________________________________________________
+
+bandit12
+
+we need read a file that is a hexdump but also compressed multiple times.
+
+it also suggest we create a directory under /tmp and copy the contents there.
+
+cd ../../tmp
+
+mkdir letmemakrdir ... i had issue making a directory because other users had already taken the folder name. 
+
+cp ../../home/bandit12/data.txt . 
+
+copied the conent of bandit12 to my folder.
+
+now I'll convert it back to binary
+
+xxd -r data.txt > data.bin
+
+file data.bin
+
+check what what zip it is and unzip it
+
+mv data.bin data.gz
+
+gunzip data.gz
+
+bunzip data
+
+mv data.out data.gz
+
+gunzip data.gz
+
+tar -xf data
+
+tar -xf data5.bin
+
+tar -xf data6.bin
+
+mv data8.bin data8.gz
+
+gunzip data8.zip
+
+cat data8
+
+flag: FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
+
+________________________________________________________________
+
+bandit13
+
+need to ssh into bandit14 and access the password in /etc/bandit_pass
+
+ls shows sshkey.private
+
+ssh -i sshkey.private bandit14@localhost -p 2220
+
+cat ../../etc/bandit_pass/bandit14
+
+flag: MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+
+________________________________________________________________
+
+bandit14
+
+I need to netcat into localhost:3000
+
+nc localhost 30000 and use bandits13 flag.
+
+flag: 8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
+
+________________________________________________________________
+
+bandit15
+
+I need to openssl into localhost:3001
+
+openssl s_client -connect localhost:30001 then past bandit14 flag
+
+flag: kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
+
+________________________________________________________________
+
+bandit16
+
+need to find which port is open to connect to.
+
+nmap -p31000-32000 localhost
+
+31046/tcp open  unknown
+31518/tcp open  unknown
+31691/tcp open  unknown
+31790/tcp open  unknown
+31960/tcp open  unknown
+
+I tried each one and finally found port 31790 to be correct.
+
+openssl s_client -quiet -connect localhost:31790
+
+enter bandit 15 flag
+
+get a private key
+
+create a directory and file for the private key in /tmp
+
+chmod 600 keys.private
+
+ssh -i keys.private bandit14@bandit.labs.overthewire.org -p 2220
+
+flag: EReVavePLFHtFlFsjn3hyzMlvSuSAcRD
+
+________________________________________________________________
+
+bandit17
+
+need to compare the two files password.new password.old
+
+diff password.new password.old
+
+flag: x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO
+
+________________________________________________________________
+
+bandit18
+
+the login script logs you out so if i use cat with the login it should still print the message before logging out.
+
+ssh bandit.labs.overthewire.org -p 2220 -l bandit18 cat readme
+
+flag: cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8
+
+________________________________________________________________
+
+bandit19
+
+I need to use the binary on the the password file
+
+./bandit20-do cat /../../etc/bandit_pass/bandit20
+
+flag: 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+
+________________________________________________________________
+
+
+bandit20
+
