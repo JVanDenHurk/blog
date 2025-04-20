@@ -311,3 +311,45 @@ ________________________________________________________________
 
 bandit20
 
+I need to use setuid binary with a simple TCP server.
+
+ls to see what setuid binary is called suconnect.
+
+simple server that tells when you're connected. echo "You're connected" | nc -l -p 
+
+i noticed when i connected i got a error message "ERROR: This doesn't match the current password!"
+
+lets replace You're connect with the last flag.
+
+Got a message: Password matches, sending next password
+
+check my running server and I have a the flag
+
+flag: EeoULMCra2q0dSkYj561DX7s1CpBuOBt
+
+________________________________________________________________
+
+bandit21
+
+I need to look into the cron job and see what command is being executed.
+
+* * * * * bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+
+every * equals a minute, the user bandit 22 runs command /usr/bin/cronjob_bandit22.sh &> /dev/null.
+
+so if i cat /usr/bin/cronjob_bandit22.sh I'll be able to see the script.
+
+#!/bin/bash
+chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+
+it changes permission so you can read and write then set the password in /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+
+cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv and I have the flag
+
+flag: tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q
+
+________________________________________________________________
+
+bandit22
+

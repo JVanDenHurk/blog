@@ -1,0 +1,126 @@
+
+leviathan0
+
+first we log in to the level using the password from the previous challenge.
+
+ls -la
+
+found a file called bookmarks.html
+opened it with:
+
+less bookmarks.html
+
+searched for the word password and found it inside the file.
+
+flag: 3QJ3TgzHDq
+
+________________________________________________________________
+
+leviathan1
+
+found a file named check, couldn’t read it directly.
+
+tried:
+
+cat check
+strings check
+./check
+
+from strings, saw secr, love
+tried them as passwords — didn't work.
+then used:
+
+ltrace ./check
+
+entered love, saw it compare with sex — that’s the correct password.
+
+switch user:
+
+cd /etc/leviathan_pass
+cat leviathan2
+
+flag: NsN1HwFoyN
+
+________________________________________________________________
+
+leviathan2
+
+binary tries to read a file, but blocks paths like /etc/leviathan_pass/
+
+used a symlink trick:
+
+cd /tmp
+ln -s /etc/leviathan_pass/leviathan3 hacked
+touch read.txt
+~/printfile "hacked read.txt"
+
+binary follows symlink since we have access to read.txt.
+
+flag: f0n8h2iWLP
+
+________________________________________________________________
+
+leviathan3
+
+ran:
+
+ltrace ./level3
+
+saw:
+
+strcmp("h0no33", "snlprint")
+
+entered snlprint, it worked.
+
+then:
+
+cd /etc/leviathan_pass
+cat leviathan4
+
+flag: WG1egElCvO
+
+________________________________________________________________
+
+leviathan4
+
+listed files:
+
+ls -la
+
+found a hidden .trash folder
+inside was a file named bin
+
+ran it:
+
+./.trash/bin
+
+got binary output — used an online binary to text converter
+
+flag: 0dyxT7F4QD
+
+________________________________________________________________
+
+leviathan5
+
+program reads from /tmp/file.log
+created a symlink:
+
+ln -s /etc/leviathan_pass/leviathan6 /tmp/file.log
+~/leviathan5
+
+flag: szo7HDB88w
+
+________________________________________________________________
+
+leviathan6
+
+program asks for a 4-digit PIN
+brute-forced it using:
+
+#!/bin/bash
+for a in {0000..9999}
+do
+  ~/leviathan6 $a
+done
+
+after running the script, it eventually printed the flag
