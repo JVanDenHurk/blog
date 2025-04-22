@@ -420,7 +420,214 @@ I need to brute force the pin code to gain access to bandit25 flag.
 
 script
 
-#!/bin/bash                                                                                                                                                                                                                                                                         bandit24_flag="gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8"                                                                                                                                                                                                                                    host="localhost"                                                                                                                          port="30002"                                                                                                                                                                                                                                                                        for pincode in {0000..9999}; do
-    echo "Trying pincode: $pincode..."
-    echo "$bandit24_flag $pincode" | nc $host $port
+#!/bin/bash
+
+flag:="gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8"
+host="localhost"
+port="30002"
+
+for pincode in {0000..9999}
+do
+    echo "$flag $pincode" | nc $host $port
 done
+
+script got stuck because it kept trying to make a new connection each time.
+
+So I open the connection outside of the loop.
+
+#!/bin/bash
+
+flag="gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8"
+host="localhost"
+port="30002"
+
+for pincode in {0000..9999}
+do
+    echo "$flag $pincode"
+done | nc $host $port
+
+flag: iCi86ttT4KSNe1armKiwbQNmB3YJP3q4
+
+________________________________________________________________
+
+bandit25
+
+I had ask google for help on this one.
+
+I know to log myself into bandit26 from bandit25
+
+ls
+
+see there is a sshkey for bandit26
+
+ssh -i bandit26.sshkey bandit26@localhost -p 2220
+
+  _                     _ _ _   ___   __  
+ | |                   | (_) | |__ \ / /  
+ | |__   __ _ _ __   __| |_| |_   ) / /_  
+ | '_ \ / _` | '_ \ / _` | | __| / / '_ \ 
+ | |_) | (_| | | | | (_| | | |_ / /| (_) |
+ |_.__/ \__,_|_| |_|\__,_|_|\__|____\___/ 
+Connection to localhost closed.
+
+the second thing was "The shell for user bandit26 is not /bin/bash"
+
+cat /etc/passwd
+
+26:/home/bandit26:/usr/bin/showtext
+
+cat /usr/bin/showtext
+
+#!/bin/sh
+
+export TERM=linux
+
+exec more ~/text.txt
+exit 0
+
+Thanks to google I found out there is a way to exploit the more command.
+
+ssh -i bandit26.sshkey bandit26@localhost -p 2220
+
+Simply make sure the terminal window is too small for the
+ASCII Bandi26 logo and --More-- will show up at the bottom of the screen and wont log us out.
+
+hit v key
+
+:set shell=/bin/bash
+
+:shell
+
+now we are in the shell
+
+we can cat /etc/bandit_pass/bandit26
+
+flag: s0773xxkk0MXfdqOfPRVr9L3jJBUOgCZ
+
+________________________________________________________________
+
+bandit26
+
+This ctf is a continuation of band 25
+
+ls
+
+see a file called bandit27-do running it gives us a hint
+
+Run a command as another user.
+  Example: ./bandit27-do id
+
+./bandit27-do cat /etc/bandit_pass/bandit27
+
+flag: upsNCc7vzaRDx6oZC6GiR6ERwe1MowGB
+
+________________________________________________________________
+
+
+bandit27
+
+Just need to git clone
+
+cd ../../tmp
+
+mkdir gc 
+
+cd gc
+
+GIT_SSH_COMMAND="ssh -p 2220 -o PreferredAuthentications=password -o PubkeyAuthentication=no" git clone ssh://bandit27-git@localhost/home/bandit27-git/repo
+
+cd repo
+
+cat README
+
+flag: Yz9IpL0sBcCeuG7m9uQFt8ZNpS4HZRcN
+
+________________________________________________________________
+
+bandit28
+
+same as before
+
+git clone ssh://bandit28-git@localhost:2220/home/bandit28-git/repo
+
+cd repo
+
+cat README.md5sum
+
+# Bandit Notes
+Some notes for level29 of bandit.
+
+## credentials
+
+- username: bandit29
+- password: xxxxxxxxxx
+
+check the commits
+
+git log
+
+found one commit called fix info leak
+
+git show 674690a00a0056ab96048f7317b9ec20c057c06b
+
+flag: 4pT1t5DENaYuqnqvadYs1oE4QLCdjmJ7
+
+________________________________________________________________
+
+bandit29
+
+git clone ssh://bandit29-git@localhost:2220/home/bandit29-git/repo
+
+switch branch/HEAD to dev
+
+git branch
+
+  origin/HEAD -> origin/master
+  origin/dev
+  origin/master
+  origin/sploits-dev
+
+git checkout dev
+
+flag: qp30ex3VLz5MDG1n91YowTv4Q8l7CDZL
+
+________________________________________________________________
+
+bandit30
+
+git clone ssh://bandit30-git@localhost:2220/home/bandit30-git/repo
+
+README.md has a cute message.
+
+can't be branches or logs
+
+lets try tags
+
+git tags
+
+reveals secret tag
+
+git show secret 
+
+flag: fb5S2xb7bRyFmAvQYQGEqsbhVyJqhnDy
+
+________________________________________________________________
+
+bandit 31
+
+git clone ssh://bandit31-git@localhost:2220/home/bandit31-git/repo
+
+echo 'May I come in?' > key.txt
+
+git add -f key.txt
+
+git commit -m "keys"
+
+git push
+
+flag: 3O9RfhqyAlVBEZpVb6LYStshZoqoSx5K
+
+________________________________________________________________
+
+bandit 31
+
