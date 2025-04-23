@@ -629,5 +629,33 @@ flag: 3O9RfhqyAlVBEZpVb6LYStshZoqoSx5K
 
 ________________________________________________________________
 
-bandit 31
+bandit 32
+
+This one was a lot of trial error
+
+what failed:
+
+>> ls
+sh: 1: LS: Permission denied
+
+>> \ls
+sh: 1: LS: Permission denied
+
+ssh bandit32@bandit.labs.overthewire.org -p 2220 "cat /etc/bandit_pass/bandit33"
+
+ssh bandit32@bandit.labs.overthewire.org -p 2220 "bash -c 'cat /etc/bandit_pass/bandit33'"
+
+ssh -t bandit32@bandit.labs.overthewire.org -p 2220 "env -i SHELL=/bin/bash bash --noprofile --norc -c 'cat /etc/bandit_pass/bandit33'"
+
+solution
+
+$0 
+
+$0 calls the script to run again and because we are not passing any arguments it falls back to the original shell
+
+cat /etc/bandit_pass/bandit33
+
+flag: tQdtbs5D5i2vJwkO8mEyYEyTL8izoeJ0
+
+________________________________________________________________
 

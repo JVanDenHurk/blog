@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🦝 Bandit Walkthrough | Hack This and That</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@400;700&family=IBM+Plex+Mono&display=swap">
+  <meta name="description" content="A walkthrough of the Bandit wargame from OverTheWire with solutions and flags.">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../" class="back-link">Go back</a>
+      <p class="post-date">Posted on April 23, 2025</p>
+      <h1>🦝 Bandit CTF Walkthrough</h1>
+      <p class="subtitle">OverTheWire Wargame Challenge Solutions</p>
+    </header>
+
+    <main>
+      <article>
+
+        <div class="challenge-info">
+          <p>Bandit is a wargame on <a href="https://overthewire.org/wargames/bandit/" target="_blank">OverTheWire</a> that focuses on learning basic Linux skills, such as navigating the file system, using SSH, and working with permissions.</p>
+        </div>
+
+        <section class="level-solution">
+          <h2>Bandit0</h2>
+          <p>First, log in to the server:</p>
+          <div class="command">ssh bandit.labs.overthewire.org -p 2220 -l bandit0</div>
+          <p>When prompted, enter the password: <code>bandit0</code></p>
+          <p>Once logged in, run the following commands:</p>
+          <ul class="steps">
+            <li><code>ls</code> – lists files in the current directory</li>
+            <li><code>cat readme</code> – reads the contents of the file</li>
+          </ul>
+          <div class="flag-container">
+            🚩 <code>ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If</code>
+          </div>
+          <p>🤔 What did I learn:</p>
+          <p><code>SSH</code> lets me connect to a remote device. <code>ls</code> lists directories, and <code>cat</code> reads file contents.</p>
+        </section>
+
+        <section class="level-solution">
+          <h2>Bandit1</h2>
+          <p>After logging in, list the files using <code>ls</code>.</p>
+        
+          <p>You’ll see a file named <code>-</code>.</p>
+          <p>A quick Google search reveals that running <code>cat -</code> treats <code>-</code> as standard input (stdin), not as a file.</p>
+          <p>To read the file correctly, specify the path to it by using this command: <code>cat ./-</code>.</p>
+        
+          <div class="flag-container">
+            🚩 <code>263JGJPfgU6LtdEvgfWU1XP5yac29mFx</code>
+          </div>
+        
+          <p>🤔 What did I learn:</p>
+          <p>When a file is named <code>-</code>, it’s interpreted as stdin by default. Prepending <code>./</code> tells the shell it's a file in the current directory.</p>
+        </section>
+        
+        <section class="level-solution">
+          <h2>Bandit2</h2>
+          <p>After logging in, use <code>ls</code> to list the files.</p>
+          <p>You’ll see a file with spaces in its name: <code>spaces in this filename</code>.</p>
+          <p>To read it with <code>cat</code>, start typing <code>cat sp</code> and press <code>Tab</code> for auto-completion.</p>
+          <p>The command should look like this: <code>cat spaces\ in\ this\ filename</code></p>        
+          <div class="flag-container">
+            🚩 <code>MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx</code>
+          </div>
+        
+          <p>🤔 What did I learn:</p>
+          <p>When working with filenames that contain spaces, use escape characters (<code>\</code>) or auto-complete with <code>Tab</code> to avoid errors.</p>
+        </section>
+        
+        
+      </article>
+    </main>
+
+    <footer>
+      <p>Created by <a href="https://github.com/jvandenhurk" target="_blank">jvandenhurk</a> • Hosted on GitHub Pages</p>
+      <p><small>Last updated: April 2025</small></p>
+    </footer>
+  </div>
+
+  <!-- Hide terminal icon on mobile -->
+  <style>
+    @media (max-width: 768px) {
+      .terminal-icon {
+        display: none;
+      }
+    }
+  </style>
+</body>
+</html>

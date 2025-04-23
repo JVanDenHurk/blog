@@ -82,10 +82,8 @@ p {
 .subtitle {
   font-size: 1.1rem;
   color: var(--dark-gray);
-  margin-bottom: 2rem;
   font-weight: 400;
 }
-
 /* Header */
 header {
   margin-bottom: 3rem;
