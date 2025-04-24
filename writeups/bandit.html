@@ -70,8 +70,105 @@
           <p>🤔 What did I learn:</p>
           <p>When working with filenames that contain spaces, use escape characters (<code>\</code>) or auto-complete with <code>Tab</code> to avoid errors.</p>
         </section>
+
+        <section class="level-solution">
+          <h2>Bandit3</h2>
+          <p>Use <code>ls</code> to find a file named <code>inhere</code>.</p>
+          <p>Change into that directory with <code>cd inhere</code>.</p>
+          <p>Run <code>ls</code> again and you won’t see anything. Try <code>ls -a</code> to show all hidden files.</p>
+          <p>You’ll find a file named <code>...Hiding-From-You</code>.</p>
+          <p>Read it using <code>cat ...Hiding-From-You</code>.</p>
+          <div class="flag-container">
+            🚩 <code>2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ</code>
+          </div>
         
+          <p>🤔 What did I learn:</p>
+          <p>Use <code>-a</code> with <code>ls</code> to list hidden files, and remember hidden files often start with a dot.</p>
+        </section>
+
+        <section class="level-solution">
+          <h2>Bandit4</h2>
+          <p>Navigate into the folder using <code>cd inhere</code>.</p>
+          <p>Run <code>file ./*</code> to display all files and their types.</p>
+          <p>You’ll see that <code>-file07</code> is an ASCII text file.</p>
+          <p>Read it with <code>cat ./-file07</code>.</p>
+          <div class="flag-container">
+            🚩 <code>4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw</code>
+          </div>
         
+          <p>🤔 What did I learn:</p>
+          <p>Use <code>./</code> to reference files that start with a dash <code>-</code>, so commands interpret them as filenames, not options.</p>
+        </section>
+
+        <section class="level-solution">
+          <h2>Bandit5</h2>
+          <p>Use <code>ls inhere</code> to explore the directory.</p>
+          <p>There are multiple files to search through.</p>
+          <p>There is a hint on the  <a href="https://overthewire.org/wargames/bandit/bandit6.html" target="_blank">bandit6 page</a>.</p>
+          <p>Enter the directoy by using <code>cd inhere</code></p>
+          <p>Use <code>find</code> with the following properties: human-readable, 1033 bytes in size, and not executable:</p>
+          <p><code>find inhere -type f -size 1033c ! -executable</code></p>
+          <p>The result will be <code>inhere/maybehere07/.file2</code>.</p>
+          <p>Read the file with <code>cat inhere/maybehere07/.file2</code>.</p>
+          <div class="flag-container">
+            🚩 <code>HWasnPhtq9AVKe0dmk45nxy20cvUa6EG</code>
+          </div>
+        
+          <p>🤔 What did I learn:</p>
+          <p>Use <code>find</code> with specific file search criteria like size and executable status to narrow down results efficiently.</p>
+        </section>
+
+        <section class="level-solution">
+          <h2>Bandit6</h2>
+          <p>Follow the instructions on the <a href="https://overthewire.org/wargames/bandit/bandit7.html" target="_blank">bandit7 page</a>.</p>
+          <p>To search for a file, use <code>find /</code> with the following properties:</p>
+          <ul>
+            <li>File type: <code>-type f</code></li>
+            <li>Owned by <code>bandit7</code>: <code>-user bandit7</code></li>
+            <li>Grouped by <code>bandit6</code>: <code>-group bandit6</code></li>
+            <li>Exactly 33 bytes: <code>-size 33c</code></li>
+            <li>Redirect errors to null: <code>2>/dev/null</code></li>
+          </ul>
+          <p>Run the following command:</p>
+          <p><code>find / -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null</code></p>
+          <p>The file you’re looking for is <code>/var/lib/dpkg/info/bandit7.password</code>.</p>
+          <p>Read it with <code>cat /var/lib/dpkg/info/bandit7.password</code>.</p>
+          <div class="flag-container">
+            🚩 <code>morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj</code>
+          </div>
+        
+          <p>🤔 What did I learn:</p>
+          <p>Use <code>find</code> with specific criteria to locate files, and redirect error messages to <code>/dev/null</code> to avoid cluttering the output.</p>
+        </section>
+        
+        <section class="level-solution">
+          <h2>Bandit7</h2>
+          <p>There’s a file called <code>data.txt</code> that contains a lot of text.</p>
+          <p>According to the hint, the flag should be next to the millionth word.</p>
+          <p>To find it, use the following command:</p>
+          <p><code>cat data.txt | grep millionth</code></p>
+          <div class="flag-container">
+            🚩 <code>dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc</code>
+          </div>
+        
+          <p>🤔 What did I learn:</p>
+          <p>Use <code>grep</code> to search through large files for specific words or phrases, especially when you know a word's position in the text.</p>
+        </section>
+        
+        <section class="level-solution">
+          <h2>Bandit8</h2>
+          <p>The hint tells us that <code>data.txt</code> contains duplicates, and the flag appears only once.</p>
+          <p>To find the unique line (the flag), use the following commands:</p>
+          <p><code>sort data.txt | uniq -u</code></p>
+          <div class="flag-container">
+            🚩 <code>4CKMh1JI91bUIZZPXDqGanal4xvAg0JM</code>
+          </div>
+        
+          <p>🤔 What did I learn:</p>
+          <p>Use <code>sort</code> followed by <code>uniq -u</code> to find unique lines in a file, especially when duplicates are present.</p>
+        </section>
+        
+
       </article>
     </main>
 
