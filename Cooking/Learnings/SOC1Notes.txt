@@ -1,9 +1,17 @@
-Junior Security Analyst Intro
-
-__________________________________________________________________________________________
-
 Pyramid Of Pain
 
+Hash Values
+
+Hash Values are fixed length set of characters that uniquely identifies data.
+
+Hashing algorithms
+
+- MD5 (Message Digest)
+
+
+-SHA-1 (Secure Hash Alorithm 1)
+
+-SHA-2 (Secure Hash Algrithm 2)
 __________________________________________________________________________________________
 
 Cyber Kill Chain
