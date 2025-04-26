@@ -1,17 +1,67 @@
+################
 Pyramid Of Pain
+################
 
-Hash Values
+************ Hash Values ************
 
 Hash Values are fixed length set of characters that uniquely identifies data.
 
+A hash function takes input data and returns a fixed-length output, known as a hash or digest.
+
 Hashing algorithms
 
-- MD5 (Message Digest)
-
+- MD5 (Message Digest 5)
+    - Returns a 128-bit hash value (typically represented as a 32-digit hexadecimal number).
+    - Often used to verify the integrity of files or data.
+    - No longer considered secure for cryptographic purposes due to vulnerabilities; not recommended for sensitive applications.
 
 -SHA-1 (Secure Hash Alorithm 1)
+    - Returns a 160-bit hash value (a 40-digit hexadecimal number).
+    - Deprecated and banned for use in digital signatures since 2013 due to known collision vulnerabilities and susceptibility to brute-force attacks.
 
 -SHA-2 (Secure Hash Algrithm 2)
+    - Replace SHA-1
+    - SHA-2 has many variants
+    - SHA-256 is the most commonly used
+    - Returns a 256-bit hash (64-digit hexadecimal number).
+
+Why Hashes Matter
+By comparing two hash values, you can determine whether a file is original, modified, malicious, or suspicious.
+
+Hash Look up tools:
+
+- https://www.virustotal.com/gui/
+- https://metadefender.opswat.com/
+
+************ IP Addresses ************
+
+IP Addresses are identifiers for devices connected to a network.
+
+************ Domain Names ************
+
+A string of text mapped to a IP Address.
+
+Punycode is a way to represent Unicode characters (like characters from other alphabets or emoji) using only ASCII, so they can be used in domain names.
+
+While it has legitimate uses (like supporting non-English languages), it can also be abused in phishing attacks.
+
+Attackers use lookalike characters (e.g., Cyrillic "а" instead of Latin "a") to create domains that appear identical to real ones, like apple.com.
+
+shorten domain is also another way.
+
+************ Host Artifacts ************
+
+Host Artifacts are traces of what the attack has left in the system. This could be, registry values, suspicious processes, malicious files or anything exclusive to the current threat.
+
+************ Network Artifacts ************
+
+Network Artifacts are traces left on the network. This could be user-agent string, C2 information, or URI patterns followed by the HTTP POST requests.
+__________________________________________________________________________________________
+
+
+
+
+OPSWAT MetaDefender
 __________________________________________________________________________________________
 
 Cyber Kill Chain
