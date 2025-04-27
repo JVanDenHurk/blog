@@ -2,11 +2,14 @@
 Pyramid Of Pain
 ################
 
-************ Hash Values ************
+The Pyramid of Pain shows how hard it is for a hacker when you block different parts of their attack.
 
-Hash Values are fixed length set of characters that uniquely identifies data.
+Very handy video to watch: https://www.youtube.com/watch?v=HjblMxfUfHs
 
-A hash function takes input data and returns a fixed-length output, known as a hash or digest.
+Hash Values
+- Hash Values are fixed length set of characters that uniquely identifies data.
+
+- A hash function takes input data and returns a fixed-length output, known as a hash or digest.
 
 Hashing algorithms
 
@@ -33,29 +36,60 @@ Hash Look up tools:
 - https://www.virustotal.com/gui/
 - https://metadefender.opswat.com/
 
-************ IP Addresses ************
+IP Addresses
+- IP Addresses are identifiers for devices connected to a network.
 
-IP Addresses are identifiers for devices connected to a network.
+Domain Names
+- A string of text mapped to a IP Address.
 
-************ Domain Names ************
+- Punycode is a way to represent Unicode characters (like characters from other alphabets or emoji) using only ASCII, so they can be used in domain names.
 
-A string of text mapped to a IP Address.
+- While it has legitimate uses (like supporting non-English languages), it can also be abused in phishing attacks.
 
-Punycode is a way to represent Unicode characters (like characters from other alphabets or emoji) using only ASCII, so they can be used in domain names.
+- Attackers use lookalike characters (e.g., Cyrillic "а" instead of Latin "a") to create domains that appear identical to real ones, like apple.com.
 
-While it has legitimate uses (like supporting non-English languages), it can also be abused in phishing attacks.
+- shorten domain is also another way.
 
-Attackers use lookalike characters (e.g., Cyrillic "а" instead of Latin "a") to create domains that appear identical to real ones, like apple.com.
+Host Artifacts
+- Host Artifacts are traces of what the attack has left in the system. This could be, registry values, suspicious processes, malicious files or anything exclusive to the current threat.
 
-shorten domain is also another way.
+Network Artifacts
+- Network Artifacts are traces left on the network. This could be user-agent string, C2 information, or URI patterns followed by the HTTP POST requests.
 
-************ Host Artifacts ************
+################
+Cyber Kill Chain
+################
 
-Host Artifacts are traces of what the attack has left in the system. This could be, registry values, suspicious processes, malicious files or anything exclusive to the current threat.
+Cyber Kill chain consists of 7 stages that describe the key objective during a cyber attack.
 
-************ Network Artifacts ************
+Recon
+- Source information to understand their target. Methods include scanning networks, social engineering and perfomring 
+  open source intelligence gathering and collect as much information that can from the public domain.
 
-Network Artifacts are traces left on the network. This could be user-agent string, C2 information, or URI patterns followed by the HTTP POST requests.
+Weaponisation
+- Create or gather the tools, exploits and capabilites that allow them to exploit the vulnerabilities. 
+- Building maleware, Crafting Phising attacks, Custom hacking tools.
+
+Delivery
+- attacking the victim using the tools they gathered.
+- Phishing email attachment, malicious links, vulnerable services, websites or offices.
+
+Exploitation
+- once the attack is successfull it will begin excuting and take advantage of the victims system.
+- software bugs, misconfigurations, weak authentication mechanisms or missing secuity controls.
+
+Installation
+- Installs a persistent mechanism that allows them to take control of the system. The mechanism will withstand againts password resets, system reboots or security updates.
+- registry run keys, scheduled tasks, cron jobs, Window services and windows startup folder.
+
+Command and Control
+- commucate with the victim and control their system. allowing the attacker to exploit the victim.
+- exfiltrating data, escalating privileges and perfomring lateral movment within the network.
+
+Actions On Objectives
+- Attcker achieving their goals.
+- exfiltrating data, gaining access to specific machines, sabotaging infrastructure, perfomring espionage or deploying ransomeware.
+
 __________________________________________________________________________________________
 
 
