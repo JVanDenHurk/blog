@@ -2,12 +2,12 @@
 Pyramid Of Pain
 ################
 
-The Pyramid of Pain shows how hard it is for a hacker when you block different parts of their attack.
+The Pyramid of Pain shows that the more critical parts of an attack you block, the harder you make it for the hacker.
 
 Very handy video to watch: https://www.youtube.com/watch?v=HjblMxfUfHs
 
 Hash Values
-- Hash Values are fixed length set of characters that uniquely identifies data.
+- Hash Values are fixed length set of characters that identifies data content.
 
 - A hash function takes input data and returns a fixed-length output, known as a hash or digest.
 
@@ -18,11 +18,11 @@ Hashing algorithms
     - Often used to verify the integrity of files or data.
     - No longer considered secure for cryptographic purposes due to vulnerabilities; not recommended for sensitive applications.
 
--SHA-1 (Secure Hash Alorithm 1)
+-SHA-1 (Secure Hash Algorithm 1)
     - Returns a 160-bit hash value (a 40-digit hexadecimal number).
     - Deprecated and banned for use in digital signatures since 2013 due to known collision vulnerabilities and susceptibility to brute-force attacks.
 
--SHA-2 (Secure Hash Algrithm 2)
+-SHA-2 (Secure Hash Algorithm 2)
     - Replace SHA-1
     - SHA-2 has many variants
     - SHA-256 is the most commonly used
@@ -63,11 +63,11 @@ Cyber Kill Chain
 Cyber Kill chain consists of 7 stages that describe the key objective during a cyber attack.
 
 Recon
-- Source information to understand their target. Methods include scanning networks, social engineering and perfomring 
+- Source information to understand their target. Methods include scanning networks, social engineering and performing 
   open source intelligence gathering and collect as much information that can from the public domain.
 
 Weaponisation
-- Create or gather the tools, exploits and capabilites that allow them to exploit the vulnerabilities. 
+- Create or gather the tools, exploits and capabilities that allow them to exploit the vulnerabilities. 
 - Building maleware, Crafting Phising attacks, Custom hacking tools.
 
 Delivery
@@ -75,49 +75,23 @@ Delivery
 - Phishing email attachment, malicious links, vulnerable services, websites or offices.
 
 Exploitation
-- once the attack is successfull it will begin excuting and take advantage of the victims system.
-- software bugs, misconfigurations, weak authentication mechanisms or missing secuity controls.
+- once the attack is successful it will begin executing and take advantage of the victims system.
+- software bugs, misconfigurations, weak authentication mechanisms or missing security controls.
 
 Installation
-- Installs a persistent mechanism that allows them to take control of the system. The mechanism will withstand againts password resets, system reboots or security updates.
+- Installs a persistent mechanism that allows them to take control of the system. The mechanism will withstand against password resets, system reboots or security updates.
 - registry run keys, scheduled tasks, cron jobs, Window services and windows startup folder.
 
 Command and Control
-- commucate with the victim and control their system. allowing the attacker to exploit the victim.
-- exfiltrating data, escalating privileges and perfomring lateral movment within the network.
+- Communicate with the victim and control their system. allowing the attacker to exploit the victim.
+- exfiltrating data, escalating privileges and performing lateral movement within the network.
 
 Actions On Objectives
-- Attcker achieving their goals.
-- exfiltrating data, gaining access to specific machines, sabotaging infrastructure, perfomring espionage or deploying ransomeware.
+- Attacker achieving their goals.
+- exfiltrating data, gaining access to specific machines, sabotaging infrastructure, performing espionage or deploying ransomeware.
 
-__________________________________________________________________________________________
-
-
-
-
-OPSWAT MetaDefender
-__________________________________________________________________________________________
-
-Cyber Kill Chain
-
-__________________________________________________________________________________________
-
+##################
 Unified Kill Chain
-
-__________________________________________________________________________________________
-
-Diamond Model
-
-__________________________________________________________________________________________
-
-MITRE
-
-__________________________________________________________________________________________
-
-Summit
-
-__________________________________________________________________________________________
-
-Eviction
+##################
 
 
