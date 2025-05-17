@@ -143,6 +143,23 @@ a:hover {
   color: var(--secondary-color);
 }
 
+/* bullet list */
+.bullet-list {
+  margin-bottom: 3rem;
+}
+
+.bullet-list  ul {
+  list-style-type: none;
+}
+
+.bullet-list  li {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
 /* Post list */
 .post-list {
   margin-bottom: 3rem;
@@ -206,7 +223,6 @@ pre code {
 .about-section ul {
   list-style-type: none;
 }
-
 
 #training {
   margin-bottom: 0px;
