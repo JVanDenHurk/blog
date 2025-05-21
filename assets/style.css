@@ -132,6 +132,17 @@ nav ul li a:hover {
   color: var(--primary-color);
 }
 
+.section-nav {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+#pre-security-nav{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 /* Links */
 a {
   color: var(--primary-color);
