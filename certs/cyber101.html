@@ -17,8 +17,8 @@
 
       <div style="margin: 2rem 0;">
   <div style="background-color: #e0e0e0; border-radius: 8px; overflow: hidden; height: 24px; width: 100%;">
-    <div style="width: 33%; background-color: #4caf50; height: 100%; text-align: center; color: white; font-weight: bold;">
-      33%
+    <div style="width: 35%; background-color: #4caf50; height: 100%; text-align: center; color: white; font-weight: bold;">
+      35%
     </div>
   </div>
 </div>
@@ -71,9 +71,68 @@
             Used PowerShell for live system monitoring, real-time process analysis, and wrote scripts to automate repetitive administrative tasks.</li>
         </ul>
 
-<!-- 
-        <h2 style="margin-top: 3rem;">Networking</h2>
 
+        <h2 style="margin-top: 3rem;">Networking Fundamentals</h2>
+        <p>
+        Networking is the backbone of cybersecurity, and this section gave me a strong foundation in how devices communicate, how data travels, and how we can analyze and secure that communication. From basic models to real-world tools, I explored how everything connects.
+        </p>
+
+        <h3>Networking Concepts</h3>
+        <ul class="bullet-list">
+          <li><strong>OSI & TCP/IP Models</strong><br/>Got to grips with how data moves through different layers of a network, from physical wires all the way up to applications.</li>
+          <li><strong>IP Addresses & Subnets</strong><br/>Learned how devices are assigned unique addresses and how subnetting helps organize and secure networks.</li>
+          <li><strong>TCP vs UDP</strong><br/>Explored the differences between reliable (TCP) and fast (UDP) protocols and when to use each.</li>
+          <li><strong>Encapsulation</strong><br/>Understood how data is packaged and passed through layers to reach its destination.</li>
+          <li><strong>Telnet</strong><br/>Used Telnet to connect to remote machines and saw how insecure protocols work under the hood.</li>
+        </ul>
+
+        <h3>Networking Essentials</h3>
+        <ul class="bullet-list">
+          <li><strong>DHCP</strong><br/>Discovered how devices automatically receive their IP settings when they join a network.</li>
+          <li><strong>ARP</strong><br/>Learned how IP addresses are linked to physical MAC addresses so devices can talk locally.</li>
+          <li><strong>ICMP</strong><br/>Used tools like <code>ping</code> and <code>tracert</code> to diagnose network issues and understand how packets are routed.</li>
+          <li><strong>Routing & NAT</strong><br/>Explored how routers direct traffic between networks, and how NAT translates private IPs to public ones.</li>
+        </ul>
+
+        <h3>Core Networking Protocols</h3>
+        <ul class="bullet-list">
+          <li><strong>DNS</strong><br/>Understood how human-friendly domain names get translated into IP addresses computers can use.</li>
+          <li><strong>WHOIS</strong><br/>Used WHOIS lookups to gather information about domain ownership and registration details.</li>
+          <li><strong>HTTP/HTTPS</strong><br/>Learned how websites are served over the internet and how HTTPS protects web traffic.</li>
+          <li><strong>FTP, SMTP, POP3, IMAP</strong><br/>Explored older protocols for file transfer and email, including how and why they can be insecure if not encrypted.</li>
+        </ul>
+
+        <h3>Secure Networking Protocols</h3>
+        <ul class="bullet-list">
+          <li><strong>TLS & HTTPS</strong><br/>Dived into how encryption secures web traffic, and how TLS keeps data safe in transit.</li>
+          <li><strong>SSH</strong><br/>Used SSH to securely connect to remote systems via the command line — a must-have skill for sysadmins and pentesters.</li>
+          <li><strong>SFTP, FTPS, SMTPS, POP3S, IMAPS</strong><br/>Looked at secure versions of file and email transfer protocols, and how encryption is layered on top of legacy systems.</li>
+          <li><strong>VPNs</strong><br/>Explored how VPNs create encrypted tunnels for safe browsing and private communication, even over public Wi-Fi.</li>
+        </ul>
+
+        <h3>Wireshark: The Basics</h3>
+        <ul class="bullet-list">
+          <li><strong>Capturing Packets</strong><br/>Used Wireshark to capture live traffic and understand how data looks as it flows through a network.</li>
+          <li><strong>Packet Dissection</strong><br/>Dug into individual packets to identify protocols, payloads, and potential issues.</li>
+          <li><strong>Filtering Traffic</strong><br/>Applied filters to zero in on specific conversations or protocols — super helpful when troubleshooting.</li>
+        </ul>
+
+        <h3>Tcpdump: The Basics</h3>
+        <ul class="bullet-list">
+          <li><strong>Command-Line Capture</strong><br/>Learned to capture network traffic using just the terminal, a lighter alternative to Wireshark.</li>
+          <li><strong>Filtering Expressions</strong><br/>Used precise filter syntax to capture only the traffic I wanted to analyze.</li>
+          <li><strong>Display Options</strong><br/>Customized output formats to make it easier to interpret results directly from the CLI.</li>
+        </ul>
+
+        <h3>Nmap: The Basics</h3>
+        <ul class="bullet-list">
+          <li><strong>Host Discovery</strong><br/>Scanned for live systems in a network to map out the environment.</li>
+          <li><strong>Port Scanning</strong><br/>Identified open ports to figure out what services are running — crucial for vulnerability assessments.</li>
+          <li><strong>Version Detection</strong><br/>Pulled back banner information and software versions to evaluate risk and exposure.</li>
+          <li><strong>Scan Timing & Output</strong><br/>Tuned scan speeds and output formats for stealth or performance depending on the situation.</li>
+        </ul>
+
+<!-- 
         <h2 style="margin-top: 3rem;">Cryptography</h2>
 
         <h2 style="margin-top: 3rem;">Exploitation Basics</h2>
