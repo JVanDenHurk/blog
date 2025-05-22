@@ -14,9 +14,23 @@ function caesarCipher(str, shift) {
 
 function encrypt() {
   const message = document.getElementById("message").value;
-  const shift = parseInt(document.getElementById("shift").value, 10);
-  const result = caesarCipher(message, shift);
-  document.getElementById("result").value = result;
+  const shiftStart = parseInt(document.getElementById("shiftStart").value);
+  const shiftEnd = parseInt(document.getElementById("shiftEnd").value);
+  const resultBox = document.getElementById("result");
+
+  if (shiftStart > shiftEnd) {
+    resultBox.value = "Invalid range: start must be less than or equal to end.";
+    return;
+  }
+
+  let results = "";
+
+  for (let shift = shiftStart; shift <= shiftEnd; shift++) {
+    const encrypted = caesarCipher(message, shift);
+    results += `Shift ${shift}: ${encrypted}\n\n`;
+  }
+
+  resultBox.value = results;
 }
 
 function decrypt() {
