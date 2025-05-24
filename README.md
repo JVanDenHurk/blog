@@ -8,7 +8,7 @@ Welcome to my little corner of the internet where I share my journey through the
 - **Tips** – Small things that saved me hours, maybe they'll help you too.
 
 ## 🧠 Why I'm Doing This
-This portfolio is a living document of my skills and personal projects. I learn best by doing, and by documenting my journey, I not only solidify my understanding but also share what I’ve learned with others who might find it useful. This isn’t a polished, formal tutorial site – it’s a real-time, evolving collection of my work in cybersecurity and tech.
+This portfolio is a living document of my skills and personal projects. I learn best by doing, and by documenting my journey, I not only solidify my understanding but also share what I’ve learned with others who might find it useful. This isn’t a polished, formal tutorial site, it’s a real-time, evolving collection of my work in cybersecurity and tech.
 
 ## 🔍 Featured Writeups and Learnings
 - [Bandit (OverTheWire)](https://jvandenhurk.github.io/writeups/bandit)
