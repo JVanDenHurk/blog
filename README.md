@@ -1,9 +1,4 @@
 # My Protfolio
-
-Welcome to my portfolio where I showcase my journey through the world of hacking, cybersecurity, and tech-related projects.
-
-This portfolio is hosted on [GitHub Pages](https://pages.github.com/), and it's where I highlight my skills, projects, and learning experiences — from Capture The Flag (CTF) challenges to custom tools and scripts. Whether it's a security vulnerability I’ve identified, a script I’ve written, or an innovative solution I’ve built, this portfolio is a reflection of my work and growth.
-
 Welcome to my little corner of the internet where I share my journey through the world of hacking, cybersecurity, and all the rabbit holes I fall into.
 
 ## 🛠️ What You'll Find Here
