@@ -17,9 +17,9 @@ This portfolio is a living document of my skills and personal projects. I learn 
 
 ## 🔍 Featured Writeups and Learnings
 - [Bandit (OverTheWire)](https://jvandenhurk.github.io/writeups/bandit)
-- [Leviathan (OverTheWire](https://jvandenhurk.github.io/writeups/leviathan)
-- [Pre-Security](https://jvandenhurk.github.io/certs/presec)
-- [Cyber Security 101](https://jvandenhurk.github.io/certs/cyber101)
+- [Leviathan (OverTheWire)](https://jvandenhurk.github.io/writeups/leviathan)
+- [Pre-Security (TryHackMe)](https://jvandenhurk.github.io/certs/presec)
+- [Cyber Security 101 (TryHackMe)](https://jvandenhurk.github.io/certs/cyber101)
 - SOC Leve 1 Path (TryHackMe) - Coming Soon
 - More coming soon...
 
