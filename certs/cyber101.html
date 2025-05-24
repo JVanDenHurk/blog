@@ -9,26 +9,28 @@
   <meta name="description" content="Writeups for CTFs, vulnerable machines, and pentesting challenges.">
 </head>
 <body>
+
   <div class="container">
     <header>
-      <a href="../index.html" class="back-link">Go back</a>
-      <h1>📘 Cyber Security 101</h1>
+    <a href="../index.html" class="back-link">Go back</a>
+    <h1>📘 Cyber Security 101</h1>
       <p class="subtitle">Discovering the tools and tactics behind digital defense.</p>
       <ul class="section-nav">
         <li><a href="#linux-fund">Linux Fundamentals</a></li>
         <li><a href="#windows-and-ad-fundamentals">Windows and AD Fundamentals</a></li>
         <li><a href="#command-line">Command Line</a></li>
-        <li><a href="#networking">Networking</a></li>
-        <!-- Add more links -->
+      </ul>
+      <ul class="section-nav">
+          <li><a href="#networking">Networking</a></li>
+          <li><a href="#cryptography">Cryptography</a></li>
       </ul>
 
-      <div style="margin: 2rem 0;">
-  <div style="background-color: #e0e0e0; border-radius: 8px; overflow: hidden; height: 24px; width: 100%;">
-    <div style="width: 35%; background-color: #4caf50; height: 100%; text-align: center; color: white; font-weight: bold;">
-      35%
+    <div style="margin: 2rem 0;">
+    <div style="background-color: #e0e0e0; border-radius: 8px; overflow: hidden; height: 24px; width: 100%;">
+      <div style="width: 44%; background-color: #4caf50; height: 100%; text-align: center; color: white; font-weight: bold;">
+        44%
+      </div>
     </div>
-  </div>
-</div>
     </header>
 
     <main>
@@ -139,8 +141,68 @@
           <li><strong>Scan Timing & Output</strong><br/>Tuned scan speeds and output formats for stealth or performance depending on the situation.</li>
         </ul>
 
-<!-- 
+
         <h2 style="margin-top: 3rem;">Cryptography</h2>
+        <p>
+        In this module, I built a solid foundation in modern cryptography. I learned how symmetric and asymmetric encryption algorithms work, and why they're essential for secure communication. I explored real-world applications like TLS, SSH, and digital signatures, and gained a deep understanding of how hashing protects data integrity and passwords. I also got hands-on experience using tools like John the Ripper to crack password hashes.
+        </p>
+
+        <h3 id="cryptography">Cryptography Basics</h3>
+        <ul class="bullet-list">
+          <li><strong>Why Cryptography Matters</strong><br/>
+          Understood the crucial role cryptography plays in safeguarding digital communication and protecting sensitive data.</li>
+          <li><strong>Plaintext to Ciphertext</strong><br/>
+          Learned how data is transformed from readable formats into encrypted strings, making it unreadable to unauthorized users.</li>
+          <li><strong>Historical Ciphers</strong><br/>
+          Explored classic encryption methods like the Caesar cipher and substitution ciphers to see how early encryption worked.</li>
+          <li><strong>Types of Encryption</strong><br/>
+          Compared symmetric vs asymmetric encryption, including how keys are shared and managed securely.</li>
+          <li><strong>Basic Math</strong><br/>
+          Brushed up on the math concepts behind encryption, like prime numbers and modular arithmetic.</li>
+        </ul>
+
+        <h3>Public Key Cryptography Basics</h3>
+        <ul class="bullet-list">
+          <li>While doing this module I decided to have some fun and build a <a href="../projects/Caesar_Cipher/ceaser_cipher.html" >Caeser Cypher</a></li>
+          <li><strong>Asymmetric Encryption</strong><br/>
+          Discovered how public and private keys enable secure communication without sharing secrets in advance.</li>
+          <li><strong>RSA & Diffie-Hellman</strong><br/>
+          Learned how these two core algorithms work to encrypt and securely exchange data.</li>
+          <li><strong>SSH</strong><br/>
+          Used SSH for secure remote access and saw how cryptography ensures safe terminal connections.</li>
+          <li><strong>Digital Signatures & Certificates</strong><br/>
+          Understood how they ensure data authenticity and integrity in systems like HTTPS and email encryption.</li>
+          <li><strong>PGP & GPG</strong><br/>
+          Explored how Pretty Good Privacy helps encrypt files and emails, and how GPG is used in practice.</li>
+        </ul>
+
+        <h3>Hashing Basics</h3>
+        <ul class="bullet-list">
+          <li><strong>What is Hashing?</strong><br/>
+          Learned how hash functions convert data into fixed-length values that uniquely represent the original input.</li>
+          <li><strong>Storing Passwords Securely</strong><br/>
+          Saw the difference between insecure and secure password storage, including the use of salts and algorithms like bcrypt.</li>
+          <li><strong>Recognizing Hash Types</strong><br/>
+          Practiced identifying different hash formats like MD5, SHA-1, and SHA-256.</li>
+          <li><strong>Cracking Hashes</strong><br/>
+          Used tools to attempt cracking weak hashes and learned how attackers target poor password practices.</li>
+          <li><strong>Hashing for Integrity</strong><br/>
+          Explored how hashes are used to verify file integrity and detect tampering.</li>
+        </ul>
+
+        <h3>John the Ripper: The Basics</h3>
+        <ul class="bullet-list">
+          <li><strong>Introduction to John</strong><br/>
+          Got started with John the Ripper, a powerful password cracking tool used by security professionals and pentesters.</li>
+          <li><strong>Hash Cracking</strong><br/>
+          Cracked basic hashes and moved on to more advanced examples like Windows and Linux system hashes.</li>
+          <li><strong>Real-World Scenarios</strong><br/>
+          Learned how to crack password-protected archives and SSH keys, and explored John’s different cracking modes.</li>
+          <li><strong>Custom Rules</strong><br/>
+          Used custom rules to enhance cracking performance and efficiency.</li>
+        </ul>
+
+<!-- 
 
         <h2 style="margin-top: 3rem;">Exploitation Basics</h2>
 
