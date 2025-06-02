@@ -27,8 +27,8 @@
 
     <div style="margin: 2rem 0;">
     <div style="background-color: #e0e0e0; border-radius: 8px; overflow: hidden; height: 24px; width: 100%;">
-      <div style="width: 44%; background-color: #4caf50; height: 100%; text-align: center; color: white; font-weight: bold;">
-        44%
+      <div style="width: 52%; background-color: #4caf50; height: 100%; text-align: center; color: white; font-weight: bold;">
+        52%
       </div>
     </div>
     </header>
@@ -202,9 +202,82 @@
           Used custom rules to enhance cracking performance and efficiency.</li>
         </ul>
 
-<!-- 
-
         <h2 style="margin-top: 3rem;">Exploitation Basics</h2>
+        <p>
+        In this module, I learned the fundamentals of exploiting vulnerabilities in real world systems. I began by manually exploiting a known vulnerability and then explored how frameworks like Metasploit simplify the exploitation process. This hands on journey ended with compromising a vulnerable Windows machine.
+        </p>
+
+        <h3 id="cve-2024-21413">Moniker Link (CVE 2024 21413)</h3>
+        <ul class="bullet-list">
+          <li><strong>Introduction</strong><br/>
+          Gained an overview of how attackers exploit Microsoft Outlook using specially crafted Moniker links.</li>
+          <li><strong>Exploitation</strong><br/>
+          Learned to bypass Protected View using CVE 2024 21413 and trigger NTLM authentication requests to leak credentials using responder.</li>
+          <li><strong>Detection</strong><br/>
+          Explored techniques to identify exploitation attempts via logs and suspicious network activity.</li>
+          <li><strong>Remediation</strong><br/>
+          Studied methods to mitigate the vulnerability, including registry changes and group policy configurations.</li>
+        </ul>
+
+        <h3>Metasploit: Introduction</h3>
+        <ul class="bullet-list">
+          <li><strong>Introduction to Metasploit</strong><br/>
+          Discovered what Metasploit is and why it’s a go to framework for penetration testers and red teamers.</li>
+          <li><strong>Main Components</strong><br/>
+          Understood how modules, payloads, encoders, and listeners work together in an exploitation workflow.</li>
+          <li><strong>Msfconsole</strong><br/>
+          Got hands on with msfconsole. The command line interface for controlling Metasploit.</li>
+          <li><strong>Working with Modules</strong><br/>
+          Learned how to search for, configure, and run Metasploit modules against targets.</li>
+        </ul>
+
+        <h3>Metasploit: Exploitation</h3>
+        <ul class="bullet-list">
+          <li><strong>Introduction</strong><br/>
+          Started the exploitation process by setting up environments and understanding pre engagement steps.</li>
+          <li><strong>Scanning</strong><br/>
+          Used Nmap to discover open ports, services, and potential vulnerabilities on the target system.</li>
+          <li><strong>Metasploit Database</strong><br/>
+          Managed scan results and host data using Metasploit’s integrated database system.</li>
+          <li><strong>Vulnerability Scanning</strong><br/>
+          Launched vulnerability scans within Metasploit to identify weaknesses in target machines.</li>
+          <li><strong>Exploitation</strong><br/>
+          Successfully executed Metasploit exploits and established shells on compromised systems.</li>
+          <li><strong>Msfvenom</strong><br/>
+          Created custom payloads using msfvenom for use in standalone scripts and phishing attacks.</li>
+        </ul>
+
+        <h3>Metasploit: Meterpreter</h3>
+        <ul class="bullet-list">
+          <li><strong>Introduction to Meterpreter</strong><br/>
+          Learned what Meterpreter is and how it functions as a stealthy in memory shell.</li>
+          <li><strong>Meterpreter Flavors</strong><br/>
+          Compared different types of Meterpreter payloads and their use cases.</li>
+          <li><strong>Meterpreter Commands</strong><br/>
+          Practiced interacting with compromised machines using powerful post exploitation commands in Meterpreter.</li>
+          <li><strong>Post Exploitation with Meterpreter</strong><br/>
+          Used Meterpreter to escalate privileges, gather credentials, and persist access on the compromised system.</li>
+          <li><strong>Post Exploitation Challenge</strong><br/>
+          Applied everything in a real world challenge scenario to solidify the learning process.</li>
+        </ul>
+
+        <h3>Blue</h3>
+        <ul class="bullet-list">
+          <li><strong>Recon</strong><br/>
+          Conducted reconnaissance on the target machine using Nmap to identify exploitable services like SMB.</li>
+          <li><strong>Gain Access</strong><br/>
+          Used Metasploit to exploit a vulnerability in SMB (EternalBlue) and gain initial access to the machine.</li>
+          <li><strong>Escalate</strong><br/>
+          Escalated privileges using built in Metasploit modules and techniques such as bypassing UAC.</li>
+          <li><strong>Cracking</strong><br/>
+          Extracted password hashes using Meterpreter and cracked them using CrackStation.net.</li>
+          <li><strong>Find Flags</strong><br/>
+          Completed the exercise by navigating the file system with Meterpreter and locating hidden flags.</li>
+        </ul>
+
+
+
+<!-- 
 
         <h2 style="margin-top: 3rem;">Web Hacking</h2>
 
