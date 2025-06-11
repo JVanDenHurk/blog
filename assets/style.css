@@ -136,6 +136,7 @@ nav ul li a:hover {
   list-style: none;
   display: flex;
   gap: 1rem;
+  padding: 10px;
 }
 
 #pre-security-nav{
