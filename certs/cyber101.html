@@ -28,8 +28,8 @@
 
     <div style="margin: 2rem 0;">
     <div style="background-color: #e0e0e0; border-radius: 8px; overflow: hidden; height: 24px; width: 100%;">
-      <div style="width: 52%; background-color: #4caf50; height: 100%; text-align: center; color: white; font-weight: bold;">
-        52%
+      <div style="width: 69%; background-color: #4caf50; height: 100%; text-align: center; color: white; font-weight: bold;">
+        69%
       </div>
     </div>
     </header>
@@ -275,12 +275,91 @@
           <li><strong>Find Flags</strong><br/>
           Completed the exercise by navigating the file system with Meterpreter and locating hidden flags.</li>
         </ul>
+      
+      <h2 style="margin-top: 3rem;" id="webhacking">Web Hacking</h2>
+      <p>
+      The Web Hacking module introduced me to the inner workings of web applications and the common vulnerabilities they face. I explored core web technologies like HTTP, JavaScript, and SQL, learned how to test them using Burp Suite, and gained insights into real-world threats through the OWASP Top 10 framework.
+      </p>
+
+        <h3>Web Application Basics</h3>
+        <ul class="bullet-list">
+          <li><strong>HTTP & URLs</strong><br/>
+          Learned how clients and servers communicate over HTTP, and how URLs map to resources on the web.</li>
+          <li><strong>Request Methods & Status Codes</strong><br/>
+          Explored common methods like GET, POST, PUT, DELETE and response codes (200, 404, 500) to understand success, redirects, and errors.</li>
+          <li><strong>Headers & Cookies</strong><br/>
+          Understood how HTTP headers control caching, content type, authentication, and how cookies maintain state between requests.</li>
+          <li><strong>Request/Response Lifecycle</strong><br/>
+          Traced the full flow of an HTTP request from browser to server and back, including DNS lookup, TCP handshake, and payload delivery.</li>
+        </ul>
+
+        <h3>JavaScript Essentials</h3>
+        <ul class="bullet-list">
+          <li><strong>DOM Manipulation</strong><br/>
+          Learned to traverse and modify the Document Object Model to dynamically update page content and structure.</li>
+          <li><strong>Event Handling</strong><br/>
+          Explored how to capture and respond to user interactions like clicks, keypresses, and form submissions.</li>
+          <li><strong>XSS Vulnerabilities</strong><br/>
+          Understood how improper input sanitization can lead to cross-site scripting and how to prevent it.</li>
+          <li><strong>Asynchronous JS</strong><br/>
+          Practiced using callbacks, promises, and async/await to handle network requests and improve user experience.</li>
+        </ul>
+
+        <h3>SQL Fundamentals</h3>
+        <ul class="bullet-list">
+          <li><strong>Basic Queries</strong><br/>
+          Mastered <code>SELECT</code> statements to retrieve data, including filtering with <code>WHERE</code> and sorting with <code>ORDER BY</code>.</li>
+          <li><strong>CRUD Operations</strong><br/>
+          Learned to <code>CREATE</code>, <code>UPDATE</code>, and <code>DELETE</code> records, managing data lifecycle within relational tables.</li>
+          <li><strong>Joins & Relationships</strong><br/>
+          Explored <code>INNER JOIN</code>, <code>LEFT JOIN</code>, and <code>RIGHT JOIN</code> to combine data from multiple tables based on key fields.</li>
+          <li><strong>SQL Injection Risks</strong><br/>
+          Understood how unsanitized inputs can allow attackers to manipulate queries, and practiced using parameterized statements to defend.</li>
+        </ul>
+
+
+        <h3>Burp Suite: The Basics</h3>
+        <ul class="bullet-list">
+          <li><strong>Introduction to Burp Suite</strong><br/>
+          Discovered the core modules: Proxy, Scanner, Intruder, Repeater and why Burp is essential for web pentesting.</li>
+          <li><strong>Installing & Configuring</strong><br/>
+          Set up Burp Community Edition and configured your browser to route traffic through the Burp proxy.</li>
+          <li><strong>Proxying Requests</strong><br/>
+          Intercepted HTTP(S) traffic to analyze and modify requests and responses on the fly.</li>
+          <li><strong>Site Map & Scanning</strong><br/>
+          Built a site map of discovered endpoints and launched passive/active scans to identify common vulnerabilities.</li>
+        </ul>
+
+        <h3>OWASP Top 10 – 2021</h3>
+        <ul class="bullet-list">
+          <li><strong>A01:2021 – Broken Access Control</strong><br/>
+          Learned how missing or misconfigured access controls allow attackers to act as other users or elevate privileges.</li>
+          <li><strong>A02:2021 – Cryptographic Failures</strong><br/>
+          Understood the risks of weak or missing encryption and how sensitive data can be exposed in transit or at rest.</li>
+          <li><strong>A03:2021 – Injection</strong><br/>
+          Explored SQL, OS, and LDAP injection techniques, and practiced input validation to prevent malicious payloads.</li>
+          <li><strong>A04:2021 – Insecure Design</strong><br/>
+          Examined how design flaws and missing security controls can lead to exploitable logic errors.</li>
+          <li><strong>A05:2021 – Security Misconfiguration</strong><br/>
+          Discovered common misconfigurations—default credentials, unnecessary services, error messages—and how to lock down systems.</li>
+          <li><strong>A06:2021 – Vulnerable & Outdated Components</strong><br/>
+          Learned to inventory third-party libraries and frameworks, scanning for known CVEs and applying timely patches.</li>
+          <li><strong>A07:2021 – Identification & Authentication Failures</strong><br/>
+          Understood how poor session management and weak credential policies can lead to account compromise.</li>
+          <li><strong>A08:2021 – Software & Data Integrity Failures</strong><br/>
+          Explored risks from trusting unverified code or data updates, including supply-chain attacks.</li>
+          <li><strong>A09:2021 – Security Logging & Monitoring Failures</strong><br/>
+          Learned why comprehensive logging, alerting, and monitoring are critical for detecting and responding to breaches.</li>
+          <li><strong>A10:2021 – Server-Side Request Forgery (SSRF)</strong><br/>
+          Practiced identifying SSRF flaws that allow attackers to make unauthorized requests from the server’s context.</li>
+        </ul>
+
 
 
 
 <!-- 
 
-        <h2 style="margin-top: 3rem;">Web Hacking</h2>
+        
 
         <h2 style="margin-top: 3rem;">Offensive Security Tooling</h2>
 
