@@ -32,8 +32,8 @@
 
     <div style="margin: 2rem 0;">
     <div style="background-color: #e0e0e0; border-radius: 8px; overflow: hidden; height: 24px; width: 100%;">
-      <div style="width: 69%; background-color: #4caf50; height: 100%; text-align: center; color: white; font-weight: bold;">
-        69%
+      <div style="width: 74%; background-color: #4caf50; height: 100%; text-align: center; color: white; font-weight: bold;">
+        74%
       </div>
     </div>
     </header>
@@ -358,18 +358,65 @@
           Practiced identifying SSRF flaws that allow attackers to make unauthorized requests from the server’s context.</li>
         </ul>
 
+      <h2 style="margin-top: 3rem;" id="offensivetooling">Offensive Security Tooling</h2>
+      <p>
+      In this module, I explored essential offensive tools for penetration testing. I learned how to use Hydra to perform password attacks, Gobuster to discover hidden directories and pages, and SQLMap to automate SQL injection against vulnerable databases building a strong toolkit for attacking common web and network weaknesses.
+      </p>
 
+      <h3>Hydra</h3>
+        <ul class="bullet-list">
+          <li><strong>Hydra Introduction</strong><br/>
+          Learned what Hydra is and how it’s used to perform brute-force attacks on various services such as SSH, FTP, and HTTP login forms.</li>
+          <li><strong>Using Hydra</strong><br/>
+          Practiced crafting Hydra commands to test different protocols, target user/password combinations, and improve attack efficiency with custom wordlists.</li>
+        </ul>
 
+      <h3>Gobuster: The Basics</h3>
+        <ul class="bullet-list">
+          <li><strong>Gobuster Introduction</strong><br/>
+          Discovered Gobuster as a fast and versatile tool for brute-forcing URIs, DNS subdomains, and virtual hostnames.</li>
+          <li><strong>Directory and File Enumeration</strong><br/>
+          Learned how to use Gobuster to find hidden directories and files on web servers using wordlists.</li>
+          <li><strong>Subdomain Enumeration</strong><br/>
+          Practiced discovering subdomains of target domains to expand the attack surface.</li>
+          <li><strong>Vhost Enumeration</strong><br/>
+          Explored virtual host enumeration to uncover sites hosted on the same server but under different domain names.</li>
+        </ul>
 
+      <h3>Shells Overview</h3>
+        <ul class="bullet-list">
+          <li><strong>Shell Overview</strong><br/>
+          Learned what shells are and how attackers use them to interact with compromised systems remotely.</li>
+          <li><strong>Reverse Shell</strong><br/>
+          Explored how reverse shells connect from the target machine back to the attacker, bypassing firewalls.</li>
+          <li><strong>Bind Shell</strong><br/>
+          Understood how bind shells listen for incoming connections on the target machine.</li>
+          <li><strong>Shell Listeners</strong><br/>
+          Set up listeners using tools like <code>nc</code> and <code>rlwrap</code> to receive incoming shell connections.</li>
+          <li><strong>Shell Payloads</strong><br/>
+          Investigated different payload types that deliver shells using Metasploit and other scripting methods.</li>
+          <li><strong>Web Shell</strong><br/>
+          Used web shells like PHP based payloads to execute commands through a web interface.</li>
+          <li><strong>Practical Task</strong><br/>
+          Applied all learned techniques in a hands-on lab, establishing different types of shells and interacting with targets.</li>
+        </ul>
+
+      <h3>SQLMap: The Basics</h3>
+        <ul class="bullet-list">
+          <li><strong>Introduction</strong><br/>
+          Got introduced to SQLMap, an automated tool to detect and exploit SQL injection vulnerabilities.</li>
+          <li><strong>SQL Injection Vulnerability</strong><br/>
+          Learned what SQL injection is, how it works, and why it’s a critical web security risk.</li>
+          <li><strong>Automated SQL Injection Tool</strong><br/>
+          Explored SQLMap’s capabilities to automate discovery and exploitation of vulnerable database systems.</li>
+          <li><strong>Practical Exercise</strong><br/>
+          Applied SQLMap in a hands on lab to identify and exploit SQL injection vulnerabilities on test targets.</li>
+        </ul>
 <!-- 
-
+  <h2 style="margin-top: 3rem;">Security Solutions</h2>
         
-
-        <h2 style="margin-top: 3rem;">Offensive Security Tooling</h2>
-
-        <h2 style="margin-top: 3rem;">Security Solutions</h2>
-        
-        <h2 style="margin-top: 3rem;">Defensive Security Tooling</h2> -->
+  <h2 style="margin-top: 3rem;">Defensive Security Tooling</h2> 
+-->
 
       </section>
 
