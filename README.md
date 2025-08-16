@@ -10,11 +10,9 @@ Welcome, come check out my current tech events. see what I'm tinkering with.
 ## 🧠 Why I'm Doing This
 This blog is a living document of my skills and personal projects. I learn best by doing, and by documenting my journey, I not only solidify my understanding but also share what I’ve learned with others who might find it useful. This isn’t a polished, formal tutorial site, it’s a real-time, evolving collection of my work in cybersecurity and tech.
 
-## 🔍 Featured Writeups and Learnings
-- [Bandit (OverTheWire)](https://jvandenhurk.github.io/writeups/bandit)
-- [Leviathan (OverTheWire)](https://jvandenhurk.github.io/writeups/leviathan)
-- [Pre-Security (TryHackMe)](https://jvandenhurk.github.io/certs/presec)
-- [Cyber Security 101 (TryHackMe)](https://jvandenhurk.github.io/certs/cyber101)
+## 🔍 Featured Blogs
+- [Proxmox Series – Part 1: Hunting for a Server](https://blog.justinvandenhurk.au/posts/huntingforaserver.html)
+- [Proxmox Series – Part 2: Hardware upgrades & Proxmox installation - Coming soon](https://blog.justinvandenhurk.au/posts/comingsoon.html)
 
 ## 📬 Contact
 If you're working on similar projects and need advice always down to connect.
