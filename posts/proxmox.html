@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Proxmox Series – Part 3: Proxmox Installation">
+  <title>Proxmox Series – Part 3: Proxmox Installation</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="..">Justin's Blog</a></h1>
+  </header>
+
+  <main>
+    <article>
+        <h2>Proxmox Series – Part 3: Proxmox Installation</h2>
+        <p class="date">Published: August 27, 2025</p>
+        <p>Setting up Proxmox was a lot easier than anticipated, thanks to their useful manuals and guides.</p>
+        <p> I went straight to their download section and downloaded the Proxmox VE 9.0 ISO. They recommended using Etcher to create a bootable USB for a baremetal install. After using Etcher to create my USB, I plugged it into my OptiPlex and repeatedly pressed F12 for boot select. After selecting the USB to boot from, I selected the first item on the list to install Proxmox. Running the setup GUI was pretty straightforward and simply involved setting up location, network, user, hostname, and gateway details.</p>
+        <p>Now my server was ready and I could leave it idle in the bedroom while I could access it over any browser on my network. First thing I did was create a new user for myself with admin privileges under PAM. This gives me a safer way to work. Unlike the root user that can mess with Proxmox system settings, my admin user can only manage VMs and containers. Perfect for spinning up machines without accidentally breaking anything important.</p>
+        <p>Now I wanted to have some fun and spin up some machines. I'll talk about the machines I created in my next blog.</p>
+    </article>
+
+<br/>
+
+      <nav class="series-nav">
+          <strong>Series Navigation:</strong>
+          <a href="huntingforaserver.html">Part 1</a> |
+          <a href="hardware.html">Part 2</a> |
+          <a href="proxmox.html">Part 3</a> |
+          <a href="comingsoon.html">Part 4</a>
+      </nav>
+    </article>
+    <a class="back" href="..">Home</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Justin Van Den Hurk</p>
+  </footer>
+</body>
+</html>
