@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="NorthStar Consulting Project – Part 3: Documentation">
+  <title>NorthStar Consulting Project – Part 3: Documentation</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="..">Justin's Blog</a></h1>
+  </header>
+
+  <main>
+    <div class="download-section">
+    <a href="../documents/ADDSDesignDocument.pdf" download="NorthStar_ADDS_Design_Document.pdf" class="download-btn">
+        📄 Download Full Design Document (PDF)
+    </a>
+</div>
+ <article>
+        <h2>AD DS Design Document</h2>
+        <p class="date">Published: August 31, 2025</p>
+        <h4>NorthStar Consulting – AD DS Implementation Plan</strong> <em>Prepared by: Justin Van Den Hurk</em> <em>Date: 31/08/2025</em></p>
+        
+        <h4>1. Business Requirements</h4>
+        <ul>
+            <li>Centralized user management (move away from workgroup setup).</li>
+            <li>Secure file storage with access based on department.</li>
+            <li>Support for growth (up to 50 users in next 3 years).</li>
+            <li>Simple Group Policies (passwords, drive mapping, desktop settings).</li>
+        </ul>
+        <h4>2. Domain Design</h4>
+        <ul>
+            <li><strong>Domain name</strong>: <code>northstar.local</code></li>
+            <li><strong>Forest</strong>: Single forest, single domain.</li>
+            <li><strong>Domain Controllers</strong>:
+                <ul>
+                    <li>DC1 (Primary – DNS, DHCP, AD DS)</li>
+                    <li>(Optional later) DC2 (Redundancy)</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <h4>3. Organizational Units (OUs)</h4>
+        <ul>
+            <li><code>Directors</code></li>
+            <li><code>Consultants</code></li>
+            <li><code>Reception</code></li>
+            <li><code>HR</code></li>
+            <li><code>Marketing</code></li>
+            <li><code>Accounts</code></li>
+            <li><code>Shared Resources</code></li>
+        </ul>
+        
+        <h4>4. User & Group Strategy</h4>
+        <ul>
+            <li><strong>Users</strong>: One per employee, format <code>firstname.lastname</code></li>
+            <li><strong>Groups</strong>:
+                <ul>
+                    <li><code>HR_Staff</code></li>
+                    <li><code>Accounts_Staff</code></li>
+                    <li><code>Consultants_Staff</code></li>
+                    <li><code>Marketing_Staff</code></li>
+                    <li><code>Reception_Staff</code></li>
+                </ul>
+            </li>
+            <li><strong>Principle of Least Privilege</strong>: Restrict HR/Accounts to department only.</li>
+        </ul>
+        
+        <h4>5. File Share Plan</h4>
+        <ul>
+            <li><code>\\northstar\Public</code> – Everyone</li>
+            <li><code>\\northstar\Consultants</code> – Consultants + Director</li>
+            <li><code>\\northstar\HR</code> – HR + Director</li>
+            <li><code>\\northstar\Accounts</code> – Accounts + Director</li>
+            <li><code>\\northstar\Marketing</code> – Marketing + Director</li>
+        </ul>
+        
+        <h4>6. Group Policies (initial)</h4>
+        <ul>
+            <li>Password policy: 8+ characters, complexity, 90-day change.</li>
+            <li>Department drive mapping.</li>
+            <li>Desktop wallpaper (company logo).</li>
+            <li>USB storage blocked for HR + Accounts.</li>
+        </ul>
+        
+        <h4>7. Testing & Rollout</h4>
+        <ul>
+            <li>Join test workstation.</li>
+            <li>Verify logon, drive mapping, permissions.</li>
+            <li>Pilot with HR + Consultant accounts.</li>
+            <li>Roll out to rest of staff.</li>
+        </ul>
+        <h4>4. User & Group Strategy</h4>
+        <ul>
+            <li><strong>Users</strong>: One per employee, format <code>firstname.lastname</code></li>
+            <li><strong>Groups</strong>:
+                <ul>
+                    <li><code>HR_Staff</code></li>
+                    <li><code>Accounts_Staff</code></li>
+                    <li><code>Consultants_Staff</code></li>
+                    <li><code>Marketing_Staff</code></li>
+                    <li><code>Reception_Staff</code></li>
+                </ul>
+            </li>
+            <li><strong>Principle of Least Privilege</strong>: Restrict HR/Accounts to department only.</li>
+        </ul>
+        
+        <h4>5. Users & Groups Assignment</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Department</th>
+                    <th>User</th>
+                    <th>Username</th>
+                    <th>Security Group</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Director</td>
+                    <td>Sarah Brown</td>
+                    <td><code>sarah.brown</code></td>
+                    <td>Directors</td>
+                    <td>Access all departments</td>
+                </tr>
+                <tr>
+                    <td>Consultants</td>
+                    <td>John Smith</td>
+                    <td><code>john.smith</code></td>
+                    <td>Consultants_Staff</td>
+                    <td>Project files</td>
+                </tr>
+                <tr>
+                    <td>Consultants</td>
+                    <td>Emily Jones</td>
+                    <td><code>emily.jones</code></td>
+                    <td>Consultants_Staff</td>
+                    <td>Project files</td>
+                </tr>
+                <tr>
+                    <td>Reception</td>
+                    <td>Alex White</td>
+                    <td><code>alex.white</code></td>
+                    <td>Reception_Staff</td>
+                    <td>Shared resources only</td>
+                </tr>
+                <tr>
+                    <td>HR</td>
+                    <td>Maria Green</td>
+                    <td><code>maria.green</code></td>
+                    <td>HR_Staff</td>
+                    <td>Confidential data</td>
+                </tr>
+                <tr>
+                    <td>Marketing</td>
+                    <td>James Black</td>
+                    <td><code>james.black</code></td>
+                    <td>Marketing_Staff</td>
+                    <td>Creative assets</td>
+                </tr>
+                <tr>
+                    <td>Accounts</td>
+                    <td>Linda Grey</td>
+                    <td><code>linda.grey</code></td>
+                    <td>Accounts_Staff</td>
+                    <td>QuickBooks access</td>
+                </tr>
+            </tbody>
+        </table>
+    </article> 
+
+      <nav class="series-nav">
+          <strong>Series Navigation:</strong>
+          <a href="northstarintro.html">Part 1</a> |
+          <a href="northstarscenario.html">Part 2</a> |
+          <a href="northstardocuments.html">Part 3</a>
+      </nav>
+    <a class="back" href="..">Home</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Justin Van Den Hurk</p>
+  </footer>
+</body>
+</html>
