@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="NorthStar Consulting Project – Part 4: Lab Setup">
+  <title>NorthStar Consulting Project – Part 4: Lab Setup</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="..">Justin's Blog</a></h1>
+  </header>
+
+  <main>
+<article>
+    <h2>NorthStar Consulting Project – Part 4: Lab Setup</h2>
+    <p class="date">Published: September 5, 2025</p>
+    <h4>Lab Environment</h4>
+    <ul>
+        <li><strong>Virtualization:</strong> VirtualBox</li>
+        <li><strong>Domain Controller:</strong> Windows Server 2025 with Desktop Experience</li>
+        <li><strong>Client Machines:</strong> Windows 11 VMs representing staff workstations</li>
+        <li><strong>File Server:</strong> Windows Server 2025 for centralized file storage</li>
+        <li><strong>VM Specs:</strong></li>
+        <ul>
+            <li><strong>DC1:</strong> 2 vCPUs, 4GB RAM, 50GB disk</li>
+            <li><strong>FS1:</strong> 2 vCPUs, 4GB RAM, 50GB disk</li>
+            <li><strong>Workstation (John Smith):</strong> 2 vCPUs, 4GB RAM, 40GB disk</li>
+        </ul>
+    </ul>
+
+    <h4>Setting up the Domain Controller (DC1)</h4>
+    <p>I started by installing Windows Server 2025 on the first VM. During installation, I chose the <strong>Desktop Experience</strong> option to ensure a GUI was available for easier configuration.</p>
+
+    <p>Once installed, I renamed the server to <strong>DC1</strong> for simplicity. Then, using the <strong>Add Roles and Features Wizard</strong>, I installed the following server roles:</p>
+    <ul>
+        <li>Active Directory Domain Services (AD DS)</li>
+        <li>DNS Server</li>
+        <li>DHCP Server</li>
+    </ul>
+
+    <p>Next, I configured AD DS by running the <strong>Promote this server to a domain controller</strong> wizard, creating a new forest called <strong>northstar.local</strong>. This automatically configured DNS for the domain.</p>
+
+    <h4>Creating OUs, Groups, and Users</h4>
+    <p>To avoid manually creating each OU, security group, and user, I leveraged PowerShell with the following script generated with the help of ChatGPT:</p>
+
+    <pre><code># Import Active Directory module
+Import-Module ActiveDirectory
+
+# --- 1. Create OUs ---
+$OUs = @("Directors","Consultants","Reception","HR","Marketing","Accounts","Workstations")
+foreach ($ou in $OUs) {
+    New-ADOrganizationalUnit -Name $ou -Path "DC=northstar,DC=local" -ProtectedFromAccidentalDeletion $true
+}
+
+# --- 2. Create Security Groups ---
+$Groups = @{
+    "Directors" = "Directors"
+    "Consultants" = "Consultants_Staff"
+    "Reception" = "Reception_Staff"
+    "HR" = "HR_Staff"
+    "Marketing" = "Marketing_Staff"
+    "Accounts" = "Accounts_Staff"
+}
+
+foreach ($ou in $Groups.Keys) {
+    New-ADGroup -Name $Groups[$ou] -GroupScope Global -GroupCategory Security -Path "OU=$ou,DC=northstar,DC=local"
+}
+
+# --- 3. Create Users and Add to Groups ---
+$Users = @(
+    @{Dept="Directors"; Name="Sarah Brown"; Username="sarah.brown"; Group="Directors"},
+    @{Dept="Consultants"; Name="John Smith"; Username="john.smith"; Group="Consultants_Staff"},
+    @{Dept="Consultants"; Name="Emily Jones"; Username="emily.jones"; Group="Consultants_Staff"},
+    @{Dept="Reception"; Name="Alex White"; Username="alex.white"; Group="Reception_Staff"},
+    @{Dept="HR"; Name="Maria Green"; Username="maria.green"; Group="HR_Staff"},
+    @{Dept="Marketing"; Name="James Black"; Username="james.black"; Group="Marketing_Staff"},
+    @{Dept="Accounts"; Name="Linda Grey"; Username="linda.grey"; Group="Accounts_Staff"}
+)
+
+foreach ($user in $Users) {
+    $password = Read-Host -AsSecureString "Enter password for $($user.Username)"
+    New-ADUser -Name $user.Name `
+        -GivenName ($user.Name.Split(" ")[0]) `
+        -Surname ($user.Name.Split(" ")[1]) `
+        -SamAccountName $user.Username `
+        -AccountPassword $password `
+        -Enabled $true `
+        -Path "OU=$($user.Dept),DC=northstar,DC=local"
+    Add-ADGroupMember -Identity $user.Group -Members $user.Username
+}
+Write-Host "OUs, groups, and users created successfully!" -ForegroundColor Green</code></pre>
+
+<p>For better organization, I also created two parent OUs: <strong>NorthStarUsers</strong> and <strong>Servers</strong>, moving all user OUs under NorthStarUsers.</p>
+
+<h4>Configuring John Smith’s Workstation</h4>
+<p>Next, I set up John Smith’s VM:</p>
+<ul>
+    <li>Renamed the device to <strong>CONSULT-01</strong></li>
+    <li>Applied a static IP and configured DNS to point to DC1</li>
+    <li>Joined the domain <strong>northstar.local</strong></li>
+</ul>
+
+<p>Once joined, John’s login account is recognized by the domain, allowing Group Policy and network resources to apply properly.</p>
+
+<h4>Setting up the File Server (FS1)</h4>
+<p>The file server VM was installed with Windows Server 2025 (Desktop Experience), renamed to <strong>FS1</strong>, assigned a static IP, DNS, and gateway, and joined to the domain.</p>
+
+<p>On FS1, I created department folders under <strong>C:\Shares</strong>:</p>
+<ul>
+    <li>Consultants</li>
+    <li>Directors</li>
+    <li>Reception</li>
+    <li>HR</li>
+    <li>Marketing</li>
+    <li>Accounts</li>
+</ul>
+
+<p>Folder permissions were configured using security groups created in AD DS, removing inherited permissions to ensure proper access control. Then, network shares were created, and mapped drives were set up using a Group Policy Object targeting the relevant OUs. For example, the Consultants folder is mapped to <strong>Z:\</strong> for users in the Consultants OU.</p>
+
+<h4>Testing</h4>
+<p>Logging in as John Smith, the mapped drive appears automatically after a <code>gpupdate /force</code> and logging off/on. Permissions are verified, ensuring users can only access folders assigned to their department.</p>
+
+<h4>Next</h4>
+<p>Part 5 will cover the deployment of additional Group Policies, configuring DHCP scopes, fine-tuning DNS settings, and testing cross-department access controls.</p>
+</article>
+
+      <nav class="series-nav">
+          <strong>Series Navigation:</strong>
+          <a href="northstarintro.html">Part 1</a> |
+          <a href="northstarscenario.html">Part 2</a> |
+          <a href="northstardocuments.html">Part 3</a> |
+          <a href="northstarlab.html">Part 4</a>|
+          <a href="northstarhomerun.html">Part 5</a>
+      </nav>
+    <a class="back" href="..">Home</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Justin Van Den Hurk</p>
+  </footer>
+</body>
+</html>

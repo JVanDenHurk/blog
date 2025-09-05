@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="NorthStar Consulting Project – Part 5: Home Run">
+  <title>NorthStar Consulting Project – Part 5: Home Run</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="..">Justin's Blog</a></h1>
+  </header>
+
+  <main>
+<article>
+    <h2>NorthStar Consulting Project – Part 5: Home Run</h2>
+    <p class="date">Published: September 5, 2025</p>
+
+    <h4>Deploying Group Policies</h4>
+    <p>With all users and OUs in place, I created several Group Policy Objects (GPOs) to enforce security and manage resources:</p>
+    <ul>
+        <li>Password policy: minimum length, complexity, and expiration.</li>
+        <li>Mapped drives for each department.</li>
+        <li>Desktop restrictions: disable USB write access, hide Control Panel for non-admins.</li>
+    </ul>
+
+    <h4>Configuring DHCP and IP Addressing</h4>
+    <p>The DHCP role on DC1 was configured to assign IP addresses within the <strong>192.168.1.0/24</strong> subnet:</p>
+    <ul>
+        <li>Configured DNS to point clients to DC1 for name resolution.</li>
+    </ul>
+
+    <h4>DNS Verification</h4>
+    <p>After joining all VMs to the domain, I verified internal name resolution:</p>
+    <ul>
+        <li>Pinged domain controllers and file server by hostname and FQDN.</li>
+        <li>Ensured no external DNS resolution issues within the lab environment.</li>
+    </ul>
+
+    <h4>Testing Access Controls</h4>
+    <p>Each user account was tested to ensure proper permissions:</p>
+    <ul>
+        <li>John Smith (Consultants) can access <strong>Consultants</strong> folder, but not HR or Accounts.</li>
+        <li>Maria Green (HR) has access to <strong>HR</strong> folder only.</li>
+        <li>Linda Grey (Accounts) can access <strong>Accounts</strong> and any resources Directors have rights to.</li>
+        <li>Mapped drives appear correctly after login and <code>gpupdate /force</code>.</li>
+    </ul>
+
+    <p>With the domain fully functional, users can now log in with domain credentials, access shared folders, and receive GPO configurations automatically. The lab successfully simulates a small business AD DS environment.</p>
+
+</article>
+
+      <nav class="series-nav">
+          <strong>Series Navigation:</strong>
+          <a href="northstarintro.html">Part 1</a> |
+          <a href="northstarscenario.html">Part 2</a> |
+          <a href="northstardocuments.html">Part 3</a> |
+          <a href="northstarlab.html">Part 4</a> |
+          <a href="northstarhomerun.html">Part 5</a>
+      </nav>
+    <a class="back" href="..">Home</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Justin Van Den Hurk</p>
+  </footer>
+</body>
+</html>
