@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Reverse Proxy Media Server">
+  <title>Reverse Proxy Media Server</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="..">Justin's Blog</a></h1>
+  </header>
+
+  <main>
+    <article>
+        <h2>Reverse Proxy Media Server</h2>
+        <p class="date">Published: September 14, 2025</p>
+
+
+<p>
+    This was a doozy of a project. My friend wanted to watch a movie called "Do the Right Thing". Funny enough, I actually had this movie on my media server. My first thought was, is there a secure way to forward my private server to the internet for my friend to connect to? And all he needed to do was type in a URL and enter his login information.
+</p>
+
+<p>
+    So here is what I found out researching ways to expose my server to the internet: I could just port forward, but I knew this was too risky. Jellyfin doesn’t have really good built-in security like Plex (no native MFA, less hardened authentication).
+</p>
+
+<p>
+    The second option was a reverse proxy. This gives me HTTPS security, rate limiting, bot blocking, and it hides the real server IP behind a proxy layer.
+</p>
+
+<p>
+    Lastly, I thought about using a VPN, but then my friend would have to set one up on his side too and that just sounded like a hassle.
+</p>
+
+<p>
+    The clear winner was the reverse proxy. So, I sourced some tools:
+</p>
+
+<ul>
+    <li><strong>DuckDNS</strong> for a domain name. I was originally going to use a free .tk domain, but found out they’re unreliable and often get suspended for no reason. DuckDNS is completely free, stable, and purpose-built for homelabs like mine. Plus, it has an API for updating DNS automatically, which is handy when your public IP changes.</li>
+    <li><strong>Nginx Proxy Manager</strong> for the reverse proxy. It comes with a friendly GUI, which won me over compared to editing raw nginx configs.</li>
+    <li><strong>Docker</strong> to run Nginx Proxy Manager cleanly on the media server without messing up the host OS.</li>
+</ul>
+
+<p>
+    After getting my domain name from DuckDNS, I added the information to the Nginx Proxy Manager form (IP address of the server and port). Then came the next step: generating an SSL certificate. This is where the problems began. At first, the Let’s Encrypt requests kept failing and I didn’t realize there was a rate limit. After retrying too many times, I actually got temporarily blocked from requesting more certificates. I dug into the browser’s network console, saw the permission errors, and finally figured out I had hit the limit.
+</p>
+
+<p>
+    So I decided to run without HTTPS for now just to test if my domain was actually resolving to my IP address. But when I tested it, the connections were still blocked, and that’s when the rabbit hole began. I had already forwarded ports 80 and 443 on my router, but it turned out my server’s UFW firewall was also blocking the ports. After fixing that, I thought I was in the clear, but the problem persisted until I finally discovered that my ISP was blocking inbound ports 80 and 443 by default.
+</p>
+
+<p>
+    So I had to log into my ISP’s portal, disable port blocking, and wait for the change to apply. After that, I finally had external access to my site through my DuckDNS domain.
+</p>
+
+<p>
+    I just needed the SSL certificate. Since HTTP-01 validation wouldn’t work with my ISP restrictions, I decided to go the DNS-01 route. I used Certbot with DuckDNS’s API, which lets you set a TXT record dynamically. That way, I could prove ownership of the domain and issue a certificate even without port 80 open. After some trial and error with the API tokens and scripts, I eventually got my certificate issued and ready to upload into Nginx Proxy Manager.
+</p>
+
+<p>
+    Now that I have my HTTPS certificate set up, all I need to do is create a user with a strong password in Jellyfin and share the login details with my friend. Finally, he can just type in the DuckDNS URL, log in, and stream the movie securely without me worrying about exposing my whole server to the internet.
+</p>
+
+
+
+    </article>
+
+    <a class="back" href="..">Home</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Justin Van Den Hurk</p>
+  </footer>
+</body>
+</html>
