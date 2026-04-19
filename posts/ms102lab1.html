@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="MS-102 Lab 1 - Tenant Setup and Identity Basics">
+  <title>MS-102 Lab 1 - Tenant Setup and Identity Basics</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="..">Justin's Blog</a></h1>
+  </header>
+
+  <main>
+    <article>
+      <h2>MS-102 Lab 1 - Tenant Setup and Identity Basics</h2>
+      <p class="date">Published: April 19, 2026</p>
+
+      <h3>Overview</h3>
+<p>
+This lab demonstrates how to create and manage users in Microsoft 365,
+and highlights the difference between Microsoft 365 Admin Center and Entra ID.
+</p>
+
+<ul>
+  <li>Created and managed users</li>
+  <li>Assigned licenses</li>
+  <li>Verified identity in Entra ID</li>
+  <li>Tested access with and without licenses</li>
+</ul>
+
+      <h3>Objective</h3>
+      <p>Build a small Microsoft 365 tenant where:</p>
+      <ul>
+        <li>Users can be created and managed</li>
+        <li>Identity is visible in both Admin Center and Entra ID</li>
+        <li>Users can sign in successfully</li>
+      </ul>
+
+      <h3>Requirements</h3>
+      <ul>
+        <li>Microsoft 365 tenant (free dev tenant)</li>
+        <li>Admin access account</li>
+      </ul>
+
+      <h3>Users to Create</h3>
+      <table border="1" cellpadding="8">
+        <tr><th>User</th><th>Email</th></tr>
+        <tr><td>Alice Carter</td><td>Alice.Carter@yourtenant.onmicrosoft.com</td></tr>
+        <tr><td>Bob Nguyen</td><td>Bob.Nguyen@yourtenant.onmicrosoft.com</td></tr>
+      </table>
+
+      <h3>Tasks</h3>
+
+      <h4>Task 1 – Access Admin Portals</h4>
+      <p>Opened Microsoft 365 Admin Center and Entra ID side by side.</p>
+      <img src="../img/task1-portals.png" alt="Admin Center and Entra ID side by side">
+
+      <h4>Task 2 – Explore Tenant Structure</h4>
+
+      <h5>Where are users managed?</h5>
+      <p>Users are managed under Users &gt; Active users.</p>
+      <img src="../img/active-users.png" alt="Active users list">
+
+      <h5>Where are licenses controlled?</h5>
+      <p>Licenses are controlled under Billing &gt; Licenses.</p>
+      <img src="../img/licenses.png" alt="Licenses page">
+
+      <h5>What is the purpose of Org settings?</h5>
+      <p>The Org settings are to configure organization settings like apps, services, and features.</p>
+      <img src="../img/org-settings.png" alt="Org settings page">
+
+      <h5>What is the difference between Microsoft 365 Admin Center and Entra ID?</h5>
+      <p>Microsoft 365 Admin Center focuses on what apps and services a user gets, while Entra ID focuses on identity and access.</p>
+
+      <h4>Task 3 – Create Users</h4>
+      <p>Created Alice Carter and Bob Nguyen and assigned licenses.</p>
+      <img src="../img/users-created.png" alt="Users created">
+
+      <h5>What license is assigned?</h5>
+      <p>Microsoft 365 E3</p>
+
+      <h5>What happens without a license?</h5>
+      <p>User can sign in but cannot access Microsoft 365 services.</p>
+
+      <h4>Task 4 – Verify in Entra ID</h4>
+      <p>Verified users exist in Entra ID.</p>
+      <img src="../img/entra-user-view.png" alt="Entra ID user view">
+
+      <h5>What extra information is shown?</h5>
+      <p>Object ID, roles, authentication methods, and sign-in info.</p>
+
+      <h5>What is an Object ID?</h5>
+      <p>Unique identifier assigned to each user.</p>
+
+      <h5>Can it be changed?</h5>
+      <p>No, it is permanent.</p>
+
+      <h4>Task 5 – Login Test</h4>
+      <p>Users successfully logged in.</p>
+
+      <h5>What determines access?</h5>
+      <p>Licenses, roles, and group membership.</p>
+
+      <h4>Task 6 – License Test</h4>
+      <p>Removed license from Bob.</p>
+      <img src="../img/unlicensed-user.png" alt="User without license">
+
+      <h5>What changed?</h5>
+      <p>User can log in but cannot access services.</p>
+
+      <h5>Which services are unavailable?</h5>
+      <p>Outlook, Teams, SharePoint, OneDrive.</p>
+
+      <h3>Knowledge Test</h3>
+
+      <h4>What is Microsoft 365 Admin Center used for?</h4>
+      <p>Manage users, licenses, and services.</p>
+
+      <h4>What is Entra ID responsible for?</h4>
+      <p>Identity and access management.</p>
+
+      <h4>Why do users exist in both systems?</h4>
+      <p>Identity is managed in Entra ID, services in Admin Center.</p>
+
+      <h4>What happens without a license?</h4>
+      <p>No access to Microsoft 365 services.</p>
+
+      <h4>Identity vs Service management?</h4>
+      <p>Identity = user/authentication, Service = apps and access.</p>
+
+    </article>
+
+    <a class="back" href="..">Home</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Justin Van Den Hurk</p>
+  </footer>
+</body>
+</html>
