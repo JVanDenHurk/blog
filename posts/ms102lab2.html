@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="MS-102 Lab 2 - Groups and License Assignment">
+  <title>MS-102 Lab 2 - Groups and License Assignment</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="..">Justin's Blog</a></h1>
+  </header>
+
+  <main>
+    <article>
+      <a href="../documents/MS102_Lab2_Assignment.docx" download style="color:blue;">MS102_Lab2_Assignment.docx</a>
+
+      <h2 style="padding-top: 10px;">MS-102 Lab 2 - Groups and License Assignment</h2>
+      <p class="date">Published: April 25, 2026</p>
+      
+      <h3>Overview</h3>
+      <p>
+        This lab demonstrates how to use Security groups and Microsoft 365 groups,
+        and how to implement group-based licensing in Microsoft 365.
+      </p>
+
+
+      <h3>Objective</h3>
+      <p>Build and manage groups in Microsoft 365 where:</p>
+      <ul>
+        <li>Users are organized using groups</li>
+        <li>Licenses are assigned via groups</li>
+        <li>Access is controlled using group membership</li>
+      </ul>
+
+      <h3>Requirements</h3>
+      <h4>Devices / Tools</h4>
+      <ul>
+        <li>Microsoft 365 tenant (same as Lab 1)</li>
+        <li>Admin access account</li>
+      </ul>
+
+      <h3>Tasks</h3>
+
+      <h4>Task 1 - Create Groups</h4>
+      <p>Create the following groups:</p>
+
+      <table border="1" cellpadding="8">
+        <tr>
+          <th>Group Name</th>
+          <th>Type</th>
+        </tr>
+        <tr>
+          <td>HR Team</td>
+          <td>Security</td>
+        </tr>
+        <tr>
+          <td>IT Team</td>
+          <td>Microsoft 365</td>
+        </tr>
+        <tr>
+          <td>IT Licensing</td>
+          <td>Security</td>
+        </tr>
+      </table>
+
+      <p>Go to:</p>
+      <ul>
+        <li>Microsoft 365 Admin Center &gt; Teams &amp; groups &gt; Active teams &amp; groups</li>
+      </ul>
+
+      <h5>IT Team</h5>
+      <ul>
+        <li>Named Microsoft 365 group IT Team</li>
+        <li>Assigned myself as the owner of the group</li>
+        <li>Skipped members as I will be adding them afterwards</li>
+        <li>Email address is IT@HurkSystems.onmicrosoft.com</li>
+      </ul>
+
+      <img src="../img/ms102-lab2-it-team-created.png" alt="Creating the IT Team Microsoft 365 group">
+
+      <h5>HR Team</h5>
+      <ul>
+        <li>Named Security group HR Team</li>
+        <li>Did not apply role assignment</li>
+      </ul>
+
+      <img src="../img/ms102-lab2-hr-team-created.png" alt="Creating the HR Team security group">
+
+      <h5>IT Licensing</h5>
+      <ul>
+        <li>Named Security group IT Licensing</li>
+        <li>Did not add role assignment</li>
+      </ul>
+
+      <img src="../img/ms102-lab2-it-licensing-created.png" alt="Creating the IT Licensing security group">
+
+      <h4>Task 2 - Add Users to Groups</h4>
+      <p>Add users:</p>
+      <ul>
+        <li>Alice &gt; HR Team</li>
+        <li>Bob &gt; IT Team</li>
+        <li>Bob &gt; IT Licensing</li>
+      </ul>
+
+      <p>Assigned Bob to IT Team by going to Active teams &amp; groups &gt; Membership &gt; Members &gt; Add members &gt; searched Bob &gt; added Bob.</p>
+
+      <p>Assigned Bob to IT Licensing by going to Active users &gt; Bob &gt; Account &gt; Manage groups &gt; Assign memberships &gt; selected IT Licensing &gt; Add.</p>
+
+      <p>Assigned Alice to HR Team by going to Security groups &gt; Members &gt; View all and manage members &gt; Add member &gt; selected Alice &gt; Save.</p>
+
+      <img src="../img/ms102-lab2-group-membership-it-team.png" alt="Adding users to groups">
+      <img src="../img/ms102-lab2-group-membership-hr-team.png" alt="Adding users to groups">
+      <img src="../img/ms102-lab2-group-membership-it-licensing.png" alt="Adding users to groups">
+
+      <h4>Task 3 - Explore Group Types</h4>
+      <p>Go to:</p>
+      <ul>
+        <li>Microsoft 365 Admin Center or Entra ID &gt; Groups</li>
+      </ul>
+
+      <p>Purpose: Groups are ways to assign users access to certain privileges or applications.</p>
+
+      <h5>Security Group</h5>
+      <p>Security groups are for granting access to company resources like tools, portals, reports, and devices.</p>
+
+      <h5>Microsoft 365 Group</h5>
+      <p>Microsoft 365 groups are for collaboration within the organization. They include a group email address and SharePoint.</p>
+
+      <h4>Task 4 - Assign License via Group</h4>
+      <ol>
+        <li>Remove direct license from Bob</li>
+        <li>Assign Microsoft 365 E3 license to IT Licensing security group</li>
+      </ol>
+
+      <p>Go to:</p>
+      <ul>
+        <li>MS365 Admin Center &gt; Teams &amp; groups &gt; Active teams &amp; groups &gt; IT Licensing &gt; Licenses and apps</li>
+      </ul>
+
+      <h5>License Removal</h5>
+      <p>Removed the direct Microsoft 365 E3 license from Bob.</p>
+
+      <img src="../img/ms102-lab2-bob-license-removed.png" alt="Bob with direct license removed">
+
+      <h5>Group-Based License Assignment</h5>
+      <p>Assigned Microsoft 365 E3 license to the IT Licensing group.</p>
+
+      <img src="../img/ms102-lab2-it-licensing-license-assigned.png" alt="Microsoft 365 E3 assigned to IT Licensing group">
+
+      <h5>Note</h5>
+      <p>Initially, a Microsoft 365 group was used for licensing, but the option was not available. This is because only Security groups support group-based licensing. A Security group named IT Licensing was created to resolve this.</p>
+
+      <h4>Task 5 - Test Group-Based Licensing</h4>
+      <p>Check Bob:</p>
+      <ul>
+        <li>Does Bob now have a license again?</li>
+      </ul>
+
+      <p>Bob now has a license because he is a member of the IT Licensing security group, which has a license assigned to it.</p>
+
+      <img src="../img/ms102-lab2-bob-license-restored.png" alt="Bob showing Microsoft 365 E3 license after group-based licensing">
+
+      <h4>Task 6 - Verify in Entra ID</h4>
+      <p>Go to:</p>
+      <ul>
+        <li>Entra ID &gt; Users &gt; Bob</li>
+      </ul>
+
+      <p>Check:</p>
+      <ul>
+        <li>Assigned licenses</li>
+        <li>Group memberships</li>
+      </ul>
+
+      <img src="../img/ms102-lab2-bob-entra-licenses.png" alt="Bob assigned licenses in Entra ID">
+      <img src="../img/ms102-lab2-bob-entra-groups.png" alt="Bob group memberships in Entra ID">
+
+      <h3>Knowledge Test</h3>
+
+      <h4>1. What is the difference between a Security group and a Microsoft 365 group?</h4>
+      <p>A Security group is for granting access to company resources, while a Microsoft 365 group is for collaboration within the company.</p>
+
+      <h4>2. Why would you assign licenses to a group instead of a user?</h4>
+      <p>Assigning licenses to a group applies the license to all users within that group, instead of assigning licenses to each user manually.</p>
+
+      <h4>3. What happens when a user is removed from a licensed group?</h4>
+      <p>When a user is removed from a licensed group, they lose all licenses associated with that group.</p>
+
+      <h4>4. Where can group-based licensing be configured?</h4>
+      <p>Group-based licensing can be configured in Microsoft 365 Admin Center &gt; Teams &amp; groups &gt; Active teams &amp; groups.</p>
+
+      <h4>5. What determines a user’s final access when they are in multiple groups?</h4>
+      <p>A user’s final access is determined by the combined permissions from all groups they are assigned to, along with licenses and roles.</p>
+
+    </article>
+
+    <a class="back" href="..">Home</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Justin Van Den Hurk</p>
+  </footer>
+</body>
+</html>
