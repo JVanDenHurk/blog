@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="MS-102 Lab 3 - Roles and Administrative Access">
+  <title>MS-102 Lab 3 - Roles and Administrative Access</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="..">Justin's Blog</a></h1>
+  </header>
+
+  <main>
+    <article>
+      <a href="../labs/MS102_Lab3_Assignment.docx" download style="color:blue;">MS102_Lab3_Assignment.docx</a>
+
+      <h2 style="padding-top: 10px;">MS-102 Lab 3 - Roles and Administrative Access</h2>
+      <p class="date">Published: April 26, 2026</p>
+
+      <h3>Overview</h3>
+      <p>
+        This lab demonstrates how administrative roles are assigned and tested in Microsoft 365.
+        It focuses on role-based access, least privilege, and using role assignable groups to manage administrative access.
+      </p>
+
+      <h3>Objective</h3>
+      <p>Manage administrative access in Microsoft 365 where:</p>
+      <ul>
+        <li>Users are assigned admin roles</li>
+        <li>Permissions are controlled using roles</li>
+        <li>Least privilege access is implemented</li>
+      </ul>
+
+      <h3>Requirements</h3>
+      <h4>Devices / Tools</h4>
+      <ul>
+        <li>Microsoft 365 tenant (same as previous labs)</li>
+        <li>Admin access account</li>
+      </ul>
+
+      <h3>Tasks</h3>
+
+      <h4>Task 1 - Explore Available Roles</h4>
+      <p>Go to:</p>
+      <ul>
+        <li>Entra ID &gt; Roles and administrators</li>
+      </ul>
+
+      <p>Review:</p>
+      <ul>
+        <li>Global Administrator</li>
+        <li>User Administrator</li>
+        <li>Helpdesk Administrator</li>
+      </ul>
+
+      <h5>What is the purpose of the Global Administrator role?</h5>
+      <p>Global Administrator can manage all aspects of Microsoft Entra ID and Microsoft 365 services.</p>
+
+      <h5>What is the purpose of the User Administrator role?</h5>
+      <p>User Administrator can manage users and groups, including creating users, deleting users, and resetting passwords for non-privileged users and some admin roles.</p>
+
+      <h5>What is the purpose of the Helpdesk Administrator role?</h5>
+      <p>Helpdesk Administrator can reset passwords for non-admin users and limited admin accounts, but does not have full administrative control.</p>
+
+      <h4>Task 2 - Assign an Admin Role to a User</h4>
+      <p>Assign the following role:</p>
+      <ul>
+        <li>Bob &gt; User Administrator</li>
+      </ul>
+
+      <p>Go to:</p>
+      <ul>
+        <li>Entra ID &gt; Roles and administrators &gt; User Administrator</li>
+        <li>Add assignment &gt; Select Bob</li>
+      </ul>
+
+      <img src="../img/ms102-lab3-user-admin-assignment.png" alt="Bob assigned User Administrator role">
+
+      <h4>Task 3 - Test Role Permissions</h4>
+      <p>Log in as Bob:</p>
+      <ul>
+        <li>https://admin.microsoft.com</li>
+      </ul>
+
+      <p>Test the following:</p>
+
+      <h5>Can Bob create users?</h5>
+      <p>Bob can create users in the Microsoft 365 Admin Center.</p>
+
+      <h5>Can Bob delete users?</h5>
+      <p>Bob can delete users in the Microsoft 365 Admin Center.</p>
+
+      <h5>Can Bob assign licenses?</h5>
+      <p>Bob can assign licenses to users in the Microsoft 365 Admin Center.</p>
+
+      <h5>What parts of the Admin Center can Bob access?</h5>
+      <p>Bob has access to user management and some settings in the Microsoft 365 Admin Center, but does not have full access to all administrative features.</p>
+
+      <h4>Task 4 - Compare with Global Administrator</h4>
+      <p>Assign:</p>
+      <ul>
+        <li>Bob &gt; Global Administrator</li>
+      </ul>
+
+      <p>Repeat the same tests from Task 3.</p>
+
+      <img src="../img/ms102-lab3-global-admin-assignment.png" alt="Bob assigned Global Administrator role">
+
+      <h5>Result</h5>
+      <p>After assigning Global Administrator, Bob had full access to all areas of the Admin Center, confirming the difference between limited and full administrative roles.</p>
+
+      <h4>Task 5 - Remove Elevated Access</h4>
+      <ul>
+        <li>Remove Global Administrator role from Bob</li>
+        <li>Keep User Administrator role</li>
+      </ul>
+
+      <img src="../img/ms102-lab3-global-admin-removed.png" alt="Global Administrator role removed from Bob">
+
+      <h4>Task 6 - Role Assignable Group</h4>
+      <p>Create a new group:</p>
+      <ul>
+        <li>Group Name: Admin Group</li>
+        <li>Type: Security</li>
+        <li>Enable: Role assignable group</li>
+      </ul>
+
+      <p>Go to:</p>
+      <ul>
+        <li>Entra ID &gt; Groups &gt; New group</li>
+      </ul>
+
+      <p>Assign role to group:</p>
+      <ul>
+        <li>Assign the User Administrator role to the Admin Group</li>
+        <li>Add Bob as a member of the Admin Group</li>
+      </ul>
+
+      <p>Created admin group in Entra ID &gt; Groups &gt; All Groups &gt; New Group &gt; Selected Security &gt; Group name "Admin Group" &gt; Role assignable group enabled &gt; Membership type Assigned &gt; Create.</p>
+
+      <img src="../img/ms102-lab3-admin-group-created.png" alt="Admin Group created as a role assignable group">
+
+      <p>Assigned User Administrator role in Entra ID &gt; Groups &gt; All Groups &gt; Admin Group &gt; Assign Role &gt; Add Assignments &gt; searched "User Admin" &gt; selected "User Administrator" &gt; Add.</p>
+
+      <img src="../img/ms102-lab3-admin-group-role-assigned.png" alt="User Administrator role assigned to Admin Group">
+
+      <p>Added Bob to Admin Group by going to Entra ID &gt; Users &gt; Bob Nguyen &gt; Groups &gt; Add memberships &gt; selected Admin Group.</p>
+
+      <h5>Note</h5>
+      <p>This allows roles to be assigned to groups instead of individual users, making administration more scalable.</p>
+
+      <h4>Task 7 - Verify in Entra ID</h4>
+      <p>Go to:</p>
+      <ul>
+        <li>Entra ID &gt; Users &gt; Bob</li>
+      </ul>
+
+      <p>Check:</p>
+      <ul>
+        <li>Assigned roles</li>
+        <li>Group memberships</li>
+      </ul>
+
+      <img src="../img/ms102-lab3-bob-group-memberships.png" alt="Bob group memberships in Entra ID">
+
+      <h3>Knowledge Test</h3>
+
+      <h4>1. What is the difference between Global Administrator and User Administrator?</h4>
+      <p>Global Administrator has full control over the tenant, while User Administrator has limited permissions focused on managing users and groups.</p>
+
+      <h4>2. Why is it not recommended to assign Global Administrator to all users?</h4>
+      <p>It is not recommended because Global Administrator has full access to the environment, which increases security risk. Most users only require limited access.</p>
+
+      <h4>3. What is the principle of least privilege?</h4>
+      <p>Users should only be given the minimum level of access required to perform their job.</p>
+
+      <h4>4. What is the benefit of assigning roles to groups instead of users?</h4>
+      <p>Assigning roles to groups is more efficient and scalable, as roles can be applied to multiple users at once.</p>
+
+      <h4>5. What happens if a user has multiple roles?</h4>
+      <p>The user will gain the combined permissions of all roles assigned to them.</p>
+
+    </article>
+
+    <a class="back" href="..">Home</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Justin Van Den Hurk</p>
+  </footer>
+</body>
+</html>
