@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="MS-102 Lab 4 - Authentication and MFA">
+  <title>MS-102 Lab 4 - Authentication and MFA</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="..">Justin's Blog</a></h1>
+  </header>
+
+  <main>
+    <article>
+      <a href="../labs/MS102_Lab4_Assignment.docx" download style="color:blue;">MS102_Lab4_Assignment.docx</a>
+
+      <h2 style="padding-top: 10px;">MS-102 Lab 4 - Authentication and Multi-Factor Authentication</h2>
+      <p class="date">Published: April 28, 2026</p>
+
+      <h3>Overview</h3>
+      <p>
+        This lab demonstrates how to configure and test Multi-Factor Authentication (MFA) in Microsoft 365.
+        It focuses on improving sign-in security, understanding authentication methods, and comparing per-user MFA with Security Defaults.
+      </p>
+
+      <h3>Objective</h3>
+      <p>Manage authentication in Microsoft 365 where:</p>
+      <ul>
+        <li>Multi-Factor Authentication (MFA) is configured</li>
+        <li>User sign-in security is improved</li>
+        <li>Authentication methods are controlled</li>
+      </ul>
+
+      <h3>Requirements</h3>
+      <h4>Devices / Tools</h4>
+      <ul>
+        <li>Microsoft 365 tenant</li>
+        <li>Admin access account</li>
+        <li>Test user accounts (Alice / Bob)</li>
+      </ul>
+
+      <h3>Tasks</h3>
+
+      <h4>Task 1 - Review Authentication Methods</h4>
+      <p>Go to:</p>
+      <ul>
+        <li>Entra ID &gt; Users &gt; Authentication methods</li>
+      </ul>
+
+      <p>Explore:</p>
+      <ul>
+        <li>Microsoft Authenticator</li>
+        <li>SMS</li>
+        <li>Email</li>
+        <li>Temporary Access Pass</li>
+      </ul>
+
+      <h5>What authentication methods are available?</h5>
+      <p>The available authentication methods include Microsoft Authenticator, phone (SMS), email, and Temporary Access Pass.</p>
+
+      <h5>Which method is most secure?</h5>
+      <p>The most secure authentication method is Microsoft Authenticator, especially when using push notifications or number matching.</p>
+
+      <img src="../img/ms102-lab4-auth-methods.png" alt="Authentication methods in Entra ID">
+
+      <h4>Task 2 - Enable MFA (Per User)</h4>
+      <p>Go to:</p>
+      <ul>
+        <li>MS365 Admin Center &gt; Users &gt; Active users</li>
+      </ul>
+
+      <p>Select a user:</p>
+      <ul>
+        <li>Alice</li>
+      </ul>
+
+      <p>Then:</p>
+      <ul>
+        <li>Click Manage multi-factor authentication</li>
+        <li>Enable MFA</li>
+      </ul>
+
+      <p>Selected Manage multi-factor authentication and was redirected to Entra ID. Applied MFA to Alice in Entra ID.</p>
+
+      <img src="../img/ms102-lab4-enable-mfa.png" alt="Enable MFA for Alice">
+
+      <h4>Task 3 - Register MFA</h4>
+      <p>Log in as Alice:</p>
+      <ul>
+        <li>https://portal.office.com</li>
+      </ul>
+
+      <p>Complete MFA setup using Microsoft Authenticator (recommended).</p>
+
+      <h4>Task 4 - Test MFA</h4>
+      <p>Log out and log back in as Alice.</p>
+
+      <h5>What happens during login?</h5>
+      <p>During login, the user is prompted to set up MFA and verify their identity using an authentication method such as Microsoft Authenticator.</p>
+
+      <h5>What additional step is required?</h5>
+      <p>The additional step is verifying the login using a second factor, such as approving a notification in the Microsoft Authenticator app.</p>
+
+      <p>MFA significantly improves security by requiring a second form of verification, making it much harder for attackers to access accounts.</p>
+
+      <h4>Task 5 - Explore Security Defaults</h4>
+      <p>Go to:</p>
+      <ul>
+        <li>Entra ID &gt; Properties (Tenant properties)</li>
+      </ul>
+
+      <p>Find:</p>
+      <ul>
+        <li>Security defaults</li>
+      </ul>
+
+      <h5>What do security defaults enforce?</h5>
+      <p>Security Defaults enforce basic identity security protections across the tenant, such as requiring MFA and blocking legacy authentication.</p>
+
+      <h5>What happens when security defaults are enabled?</h5>
+      <p>When Security Defaults are enabled, MFA is enforced for users and administrators, and insecure authentication methods are blocked.</p>
+
+      <img src="../img/ms102-lab4-security-defaults.png" alt="Security Defaults settings">
+
+      <h4>Task 6 - Compare MFA vs Security Defaults</h4>
+
+      <h5>What is the difference between per-user MFA and Security Defaults?</h5>
+      <p>Per-user MFA allows administrators to manually enable MFA for specific users, while Security Defaults automatically enforce MFA and other security protections across the entire tenant without requiring manual configuration.</p>
+
+      <h5>When would you use Security Defaults instead of manual MFA?</h5>
+      <p>Security Defaults are used in small or new environments where basic security needs to be applied quickly without complex configuration.</p>
+
+      <h4>Task 7 - Verify in Entra ID</h4>
+      <p>Go to:</p>
+      <ul>
+        <li>Entra ID &gt; Users &gt; Alice</li>
+      </ul>
+
+      <p>Check:</p>
+      <ul>
+        <li>Authentication methods</li>
+        <li>Sign-in activity</li>
+      </ul>
+
+      <img src="../img/ms102-lab4-entra-verification.png" alt="Verify authentication methods in Entra ID">
+
+      <h3>Knowledge Test</h3>
+
+      <h4>1. What is Multi-Factor Authentication (MFA)?</h4>
+      <p>MFA is a security method that requires users to verify their identity using two or more factors, such as a password and a mobile authentication app.</p>
+
+      <h4>2. Why is MFA important?</h4>
+      <p>MFA is important because it helps prevent unauthorized access to your account, even if a password is compromised.</p>
+
+      <h4>3. What is the difference between password-only authentication and MFA?</h4>
+      <p>Password-only authentication uses a single factor, while MFA requires multiple factors to verify identity.</p>
+
+      <h4>4. What is the most secure authentication method?</h4>
+      <p>Microsoft Authenticator is the most secure authentication method.</p>
+
+      <h4>5. What do Security Defaults provide?</h4>
+      <p>Security Defaults provide a set of basic security protections, including enforcing MFA, blocking legacy authentication, and protecting against common attacks.</p>
+
+    </article>
+
+    <a class="back" href="..">Home</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Justin Van Den Hurk</p>
+  </footer>
+</body>
+</html>
