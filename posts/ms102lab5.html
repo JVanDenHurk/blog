@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="MS-102 Lab 5 - Conditional Access Policies">
+  <title>MS-102 Lab 5 - Conditional Access Policies</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="..">Justin's Blog</a></h1>
+  </header>
+
+  <main>
+    <article>
+      <a href="../documents/MS102_Lab5_Assignment.docx" download style="color:blue;">MS102_Lab5_Assignment.docx</a>
+
+      <h2 style="padding-top: 10px;">MS-102 Lab 5 - Conditional Access Policies</h2>
+      <p class="date">Published: May 02, 2026</p>
+
+      <h3>Overview</h3>
+      <p>
+        This lab focuses on configuring Conditional Access policies in Microsoft Entra ID to control how users access resources.
+        It replaces basic protections like Security Defaults with more flexible and targeted security controls.
+      </p>
+
+      <h3>Before You Start</h3>
+      <ul>
+        <li>Do not lock yourself out</li>
+        <li>Keep your admin account excluded if needed</li>
+        <li>Test with Alice and Bob first</li>
+      </ul>
+
+      <h3>Objective</h3>
+      <p>Manage access in Microsoft 365 where:</p>
+      <ul>
+        <li>Conditional Access policies are created</li>
+        <li>Access is controlled based on conditions</li>
+        <li>MFA is enforced using policies</li>
+        <li>Security is applied at a granular level</li>
+      </ul>
+
+      <h3>Requirements</h3>
+      <h4>Devices / Tools</h4>
+      <ul>
+        <li>Microsoft 365 tenant</li>
+        <li>Admin access account</li>
+        <li>Test user accounts (Alice / Bob)</li>
+      </ul>
+
+      <h3>Tasks</h3>
+
+      <h4>Task 1 - Explore Conditional Access</h4>
+      <p>Go to:</p>
+      <ul>
+        <li>Entra ID &gt; Protection &gt; Conditional Access</li>
+      </ul>
+
+      <p>Review:</p>
+      <ul>
+        <li>Policies</li>
+        <li>Named locations</li>
+        <li>What-If tool</li>
+      </ul>
+
+      <h5>What is Conditional Access?</h5>
+      <p>Conditional Access is a policy-based system that applies controls such as MFA or blocking access based on specific conditions like user, location, or device.</p>
+
+      <h5>Where are Conditional Access policies managed?</h5>
+      <p>Conditional Access policies are managed under Entra ID &gt; Protection &gt; Conditional Access.</p>
+
+      <img src="../img/ms102-lab5-conditional-access-overview.png" alt="Conditional Access overview in Entra ID">
+
+      <h4>Task 2 - Disable Security Defaults</h4>
+      <p>Go to:</p>
+      <ul>
+        <li>Entra ID &gt; Overview &gt; Properties &gt; Manage security defaults &gt; Disabled &gt; Select "My organization is planning to use Conditional Access" &gt; Save &gt; Disable</li>
+      </ul>
+
+      <h5>Why must Security Defaults be disabled before using Conditional Access?</h5>
+      <p>Security Defaults must be disabled because they conflict with Conditional Access, as both control authentication and access policies.</p>
+
+      <h4>Task 3 - Create a Conditional Access Policy</h4>
+      <p>Create a new policy:</p>
+      <ul>
+        <li>Name: Require MFA for HR Team</li>
+      </ul>
+
+      <p>Assignments:</p>
+      <ul>
+        <li>Users:
+          <ul>
+            <li>Include: Select users and groups &gt; HR Team</li>
+            <li>Exclude: Select users and groups &gt; Your admin account</li>
+          </ul>
+        </li>
+        <li>Target resources:
+          <ul>
+            <li>Include: All resources (formerly "All cloud apps")</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p>Access controls:</p>
+      <ul>
+        <li>Grant:
+          <ul>
+            <li>Require multi-factor authentication</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p>Enable policy:</p>
+      <ul>
+        <li>On</li>
+      </ul>
+
+      <img src="../img/ms102-lab5-require-mfa-policy.png" alt="Conditional Access policy requiring MFA for HR Team">
+
+      <h4>Task 4 - Test the Policy</h4>
+      <p>Log in as Alice:</p>
+      <ul>
+        <li>https://portal.office.com</li>
+      </ul>
+
+      <h5>What happens during login?</h5>
+      <p>The user is prompted to complete MFA verification during login.</p>
+
+      <h5>Is MFA required now through policy?</h5>
+      <p>MFA is now required for users in the HR Team through the Conditional Access policy.</p>
+
+      <h4>Task 5 - Create a Location-Based Policy</h4>
+      <p>Go to:</p>
+      <ul>
+        <li>Entra ID &gt; Protection &gt; Conditional Access &gt; Named locations</li>
+      </ul>
+
+      <p>Create:</p>
+      <ul>
+        <li>Name: Trusted Country</li>
+        <li>Location type: Countries</li>
+        <li>Select: Australia</li>
+      </ul>
+
+      <img src="../img/ms102-lab5-trusted-country.png" alt="Trusted Country named location in Conditional Access">
+
+      <p>Then create policy:</p>
+      <ul>
+        <li>Name: Block access outside trusted country</li>
+      </ul>
+
+      <p>Go to:</p>
+      <ul>
+        <li>Entra ID &gt; Protection &gt; Conditional Access &gt; Policies &gt; + New policy</li>
+      </ul>
+
+      <p>Assignments:</p>
+      <ul>
+        <li>Users:
+          <ul>
+            <li>Include: Select users and groups &gt; IT Team</li>
+            <li>Exclude: Select users and groups &gt; Your admin account</li>
+          </ul>
+        </li>
+        <li>Target resources:
+          <ul>
+            <li>Include: All resources (formerly "All cloud apps")</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p>Conditions:</p>
+      <ul>
+        <li>Locations:
+          <ul>
+            <li>Include: Any location</li>
+            <li>Exclude: Trusted Country</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p>Access controls:</p>
+      <ul>
+        <li>Grant:
+          <ul>
+            <li>Block access</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p>Enable policy:</p>
+      <ul>
+        <li>On</li>
+      </ul>
+
+      <img src="../img/ms102-lab5-location-policy.png" alt="Conditional Access policy blocking access outside trusted country">
+
+      <h4>Task 6 - Test Location Policy</h4>
+      <p>Attempt login as Bob.</p>
+
+      <h5>What happens when logging in from outside the trusted location?</h5>
+      <p>The user receives an access blocked message indicating that sign-in is restricted by a Conditional Access policy.</p>
+
+      <h5>Is access blocked?</h5>
+      <p>Access is blocked when logging in from outside the trusted country.</p>
+
+      <p>This demonstrates how Conditional Access can enforce geographic restrictions to prevent unauthorized access from outside trusted regions.</p>
+
+      <img src="../img/ms102-lab5-location-blocked.png" alt="Access blocked by Conditional Access location policy">
+
+      <h4>Task 7 - Verify in Entra ID</h4>
+      <p>Go to:</p>
+      <ul>
+        <li>Entra ID &gt; Users &gt; Alice / Bob</li>
+      </ul>
+
+      <p>Check:</p>
+      <ul>
+        <li>Sign-in logs</li>
+        <li>Conditional Access status</li>
+      </ul>
+
+      <img src="../img/ms102-lab5-sign-in-logs.png" alt="Sign-in logs showing Conditional Access status">
+
+      <h3>Knowledge Test</h3>
+
+      <h4>1. What is Conditional Access?</h4>
+      <p>Conditional Access is a policy framework that controls access to resources based on conditions such as user identity, location, device, or risk level.</p>
+
+      <h4>2. What is the difference between MFA and Conditional Access?</h4>
+      <p>MFA is a security method that requires multiple forms of authentication, while Conditional Access is a policy system that determines when MFA or other controls should be applied.</p>
+
+      <h4>3. Why is Conditional Access more powerful than Security Defaults?</h4>
+      <p>Conditional Access is more powerful than Security Defaults because it allows granular control, such as applying policies to specific users, groups, locations, or applications.</p>
+
+      <h4>4. What conditions can be used in Conditional Access policies?</h4>
+      <p>Conditional Access policies can use conditions such as users or groups, locations, devices, client apps, and sign-in risk.</p>
+
+      <h4>5. What happens if multiple Conditional Access policies apply to a user?</h4>
+      <p>If multiple Conditional Access policies apply to a user, all applicable policies are evaluated and enforced together.</p>
+
+    </article>
+
+    <a class="back" href="..">Home</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Justin Van Den Hurk</p>
+  </footer>
+</body>
+</html>
