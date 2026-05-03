@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="MS-102 Lab 6 - Self-Service Password Reset and Identity Protection">
+  <title>MS-102 Lab 6 - Self-Service Password Reset and Identity Protection</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="..">Justin's Blog</a></h1>
+  </header>
+
+  <main>
+    <article>
+      <a href="../documents/MS102_Lab6_Assignment.docx" download style="color:blue;">MS102_Lab6_Assignment.docx</a>
+
+      <h2 style="padding-top: 10px;">MS-102 Lab 6 - Self-Service Password Reset and Identity Protection</h2>
+      <p class="date">Published: May 03, 2026</p>
+
+      <h3>Overview</h3>
+      <p>
+        This lab focuses on protecting user identities in Microsoft Entra ID by configuring Self-Service Password Reset
+        and reviewing identity risk features. It builds on MFA and Conditional Access by showing how users can recover
+        accounts securely and how risky sign-ins can be monitored.
+      </p>
+
+      <h3>Objective</h3>
+      <p>Manage identity protection in Microsoft 365 where:</p>
+      <ul>
+        <li>Self-Service Password Reset is configured</li>
+        <li>Users can reset their own passwords</li>
+        <li>Authentication methods are used for account recovery</li>
+        <li>Risky sign-ins and users are reviewed</li>
+      </ul>
+
+      <h3>Requirements</h3>
+      <h4>Devices / Tools</h4>
+      <ul>
+        <li>Microsoft 365 tenant</li>
+        <li>Admin access account</li>
+        <li>Test user accounts Alice / Bob</li>
+        <li>Microsoft Authenticator or phone number for testing</li>
+      </ul>
+
+      <h3>Tasks</h3>
+
+      <h4>Task 1 - Explore Password Reset Settings</h4>
+      <p>Go to:</p>
+      <ul>
+        <li>Entra ID &gt; Protection &gt; Password reset</li>
+      </ul>
+
+      <p>Review:</p>
+      <ul>
+        <li>Properties</li>
+        <li>Authentication methods</li>
+        <li>Registration</li>
+        <li>Notifications</li>
+      </ul>
+
+      <img src="../img/ms102-lab6-password-reset-overview.png" alt="Password reset overview in Microsoft Entra ID">
+
+      <h5>What is Self-Service Password Reset?</h5>
+      <p>Self-Service Password Reset allows the user to reset their own password.</p>
+
+      <h5>Where is SSPR configured?</h5>
+      <p>SSPR is configured under Entra ID &gt; Password reset.</p>
+
+      <h4>Task 2 - Enable Self-Service Password Reset</h4>
+      <p>Go to:</p>
+      <ul>
+        <li>Entra ID &gt; Password reset &gt; Properties</li>
+      </ul>
+
+      <p>Set:</p>
+      <ul>
+        <li>Self-service password reset enabled &gt; Selected</li>
+        <li>Select group &gt; HR Team</li>
+      </ul>
+
+      <img src="../img/ms102-lab6-sspr-enabled-hr-team.png" alt="Self-Service Password Reset enabled for the HR Team group">
+
+      <h5>Why is it safer to enable SSPR for a group first instead of all users?</h5>
+      <p>
+        Applying SSPR to a single group allows for testing and lowers the chance of a mass user lockout.
+      </p>
+
+      <h4>Task 3 - Configure Authentication Methods</h4>
+      <p>Go to:</p>
+      <ul>
+        <li>Entra ID &gt; Protection &gt; Password reset &gt; Authentication methods</li>
+      </ul>
+
+      <p>Configure:</p>
+      <ul>
+        <li>Number of methods required to reset &gt; 1</li>
+      </ul>
+
+      <img src="../img/ms102-lab6-password-reset-authentication-methods.png" alt="Password reset authentication methods requiring one method to reset">
+
+      <p>Then go to:</p>
+      <ul>
+        <li>Entra ID &gt; Authentication methods</li>
+      </ul>
+
+      <p>Review available methods:</p>
+      <ul>
+        <li>Microsoft Authenticator</li>
+        <li>SMS / mobile phone</li>
+        <li>Voice call</li>
+        <li>Email</li>
+        <li>Temporary Access Pass</li>
+      </ul>
+
+      <img src="../img/ms102-lab6-authentication-methods-policy.png" alt="Microsoft Entra authentication methods policy showing available methods">
+
+      <h5>Why should users have more than one recovery method?</h5>
+      <p>
+        Users should have more than one recovery method to ensure they can still reset their password if one method
+        is unavailable, improving reliability and security.
+      </p>
+
+      <h5>Which methods are available for password reset?</h5>
+      <p>
+        The available methods include Microsoft Authenticator, SMS, voice call, email, and Temporary Access Pass.
+      </p>
+
+      <h4>Task 4 - Register Authentication Methods</h4>
+      <p>Go to:</p>
+      <ul>
+        <li><a href="https://aka.ms/ssprsetup">https://aka.ms/ssprsetup</a></li>
+      </ul>
+
+      <p>Log in as Alice.</p>
+
+      <p>Register:</p>
+      <ul>
+        <li>Microsoft Authenticator</li>
+        <li>Phone or email recovery method</li>
+      </ul>
+
+      <h5>What information does Alice need to register?</h5>
+      <p>
+        Alice needs to register authentication methods such as Microsoft Authenticator, a mobile phone number,
+        or an email address to verify her identity.
+      </p>
+
+      <h5>Why is registration required before password reset can work?</h5>
+      <p>
+        Registration is required so the system has verified authentication methods to confirm the user’s identity
+        before allowing a password reset.
+      </p>
+
+      <h4>Task 5 - Test Self-Service Password Reset</h4>
+      <p>Go to:</p>
+      <ul>
+        <li><a href="https://passwordreset.microsoftonline.com">https://passwordreset.microsoftonline.com</a></li>
+      </ul>
+
+      <p>Test with:</p>
+      <ul>
+        <li>Alice</li>
+      </ul>
+
+      <p>Complete:</p>
+      <ul>
+        <li>Verify identity</li>
+        <li>Reset password</li>
+        <li>Sign in with new password</li>
+      </ul>
+
+      <h5>Was Alice able to reset her password?</h5>
+      <p>Alice was able to reset her password.</p>
+
+      <h5>What verification method was required?</h5>
+      <p>
+        Alice needed to enter a username or email address along with a CAPTCHA. After this step, she then had to
+        enter a code from the Authenticator app or approve a notification in the app.
+      </p>
+
+      <h5>Could Alice sign in after resetting the password?</h5>
+      <p>Alice could sign in after using SSPR.</p>
+
+      <h4>Task 6 - Review Risky Users and Sign-Ins</h4>
+      <p>Go to:</p>
+      <ul>
+        <li>Entra ID &gt; ID Protection &gt; Dashboard</li>
+      </ul>
+
+      <p>Review:</p>
+      <ul>
+        <li>Risky users</li>
+        <li>Risky sign-ins</li>
+        <li>Risk detections</li>
+      </ul>
+
+      <img src="../img/ms102-lab6-identity-protection-dashboard.png" alt="Identity Protection dashboard showing risky users and risky sign-ins">
+
+      <h5>What is a risky user?</h5>
+      <p>
+        A risky user is an account where one or more risky sign-ins or risk detections have been reported.
+      </p>
+
+      <h5>What is a risky sign-in?</h5>
+      <p>
+        A risky sign-in is a login attempt that appears suspicious based on factors such as unusual location,
+        unfamiliar device, or abnormal behaviour.
+      </p>
+
+      <h5>Why would an admin review risk events?</h5>
+      <p>
+        An admin reviews risk events to help prevent unauthorised access to the organisation.
+      </p>
+
+      <h4>Task 7 - Verify User Authentication Methods</h4>
+      <p>Go to:</p>
+      <ul>
+        <li>Entra ID &gt; Users &gt; Alice</li>
+      </ul>
+
+      <p>Check:</p>
+      <ul>
+        <li>Authentication methods</li>
+        <li>Sign-in logs</li>
+      </ul>
+
+      <img src="../img/ms102-lab6-alice-authentication-methods.png" alt="Alice authentication methods in Microsoft Entra ID">
+
+      <img src="../img/ms102-lab6-alice-password-reset-signin-log.png" alt="Alice sign-in log showing Microsoft password reset service activity">
+
+      <h5>Which authentication methods are registered for Alice?</h5>
+      <p>
+        Alice has sign-in activity showing use of the Microsoft password reset service.
+      </p>
+
+      <h5>Is there evidence of password reset or sign-in activity?</h5>
+      <p>
+        Yes. Alice has a successful non-interactive sign-in log showing activity from the Microsoft password reset service.
+      </p>
+
+      <h3>Knowledge Test</h3>
+
+      <h4>1. What is Self-Service Password Reset?</h4>
+      <p>Self-Service Password Reset allows the user to reset their own password.</p>
+
+      <h4>2. Why is SSPR useful for users and helpdesk teams?</h4>
+      <p>
+        SSPR reduces helpdesk workload by allowing users to reset their own passwords without administrator intervention.
+      </p>
+
+      <h4>3. Why should SSPR be enabled for a test group before all users?</h4>
+      <p>
+        SSPR should be enabled for a test group first to validate configuration and avoid impacting all users if issues occur.
+      </p>
+
+      <h4>4. What is the difference between a risky user and a risky sign-in?</h4>
+      <p>
+        A risky user is an account that is suspected to be compromised based on overall activity, while a risky sign-in
+        is a specific login attempt that appears suspicious, such as logging in from an unusual location or device.
+      </p>
+
+      <h4>5. How do MFA, SSPR, and Conditional Access work together?</h4>
+      <p>
+        MFA verifies user identity during sign-in, SSPR allows users to securely reset their passwords, and Conditional
+        Access enforces when and how users can access resources based on defined conditions.
+      </p>
+
+    </article>
+
+    <a class="back" href="..">Home</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Justin Van Den Hurk</p>
+  </footer>
+</body>
+</html>
